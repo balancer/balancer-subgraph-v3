@@ -4,12 +4,12 @@ This repository contains the subgraph implementations for Balancer v3, including
 
 ## Preliminary Deployments
 
-| Subgraph | Version | Endpoint                                                                                 |
-| -------- | ------- | ---------------------------------------------------------------------------------------- |
-| Vault    | 8th     | https://api.studio.thegraph.com/query/31386/balancer-v3-sepolia-8th/version/latest       |
-| Pools    | 8th     | https://api.studio.thegraph.com/query/31386/balancer-pools-v3-sepolia-8th/version/latest |
-| Vault    | 7th     | https://api.studio.thegraph.com/query/31386/balancer-v3-sepolia-7th/version/latest       |
-| Pools    | 7th     | https://api.studio.thegraph.com/query/31386/balancer-pools-v3-sepolia-7th/version/latest |
+| Subgraph | Version | Endpoint                                                                                  |
+| -------- | ------- | ----------------------------------------------------------------------------------------- |
+| Vault    | 10      | https://api.studio.thegraph.com/query/31386/balancer-v3-sepolia-10th/version/latest       |
+| Pools    | 10      | https://api.studio.thegraph.com/query/31386/balancer-pools-v3-sepolia-10th/version/latest |
+| Vault    | 9th     | https://api.studio.thegraph.com/query/31386/balancer-v3-sepolia-9th/version/latest        |
+| Pools    | 9th     | https://api.studio.thegraph.com/query/31386/balancer-pools-v3-sepolia-9th/version/latest  |
 
 ## Prerequisites
 

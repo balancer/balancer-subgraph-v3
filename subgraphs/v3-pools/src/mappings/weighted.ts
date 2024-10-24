@@ -26,6 +26,6 @@ export function handleWeightedPoolCreated(event: PoolCreated): void {
     PoolType.Weighted,
     1,
     handleWeightedPoolParams,
-    "stableParams"
+    "weightedParams"
   );
 }

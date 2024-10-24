@@ -15,7 +15,7 @@ function replacePlaceholders(template, network, networkData) {
   return result;
 }
 
-['pools', 'vault'].forEach(subgraph => {
+['v3-pools', 'v3-vault'].forEach(subgraph => {
   const templatePath = path.join('subgraphs', subgraph, 'template.yaml');
   
   if (!fs.existsSync(templatePath)) {

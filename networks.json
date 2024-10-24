@@ -1,16 +1,16 @@
 {
   "sepolia": {
     "Vault": {
-      "address": "0x0EF1c156a7986F394d90eD1bEeA6483Cc435F542",
-      "startBlock": 6638943
+      "address": "0x68aD967ae8393B722EC69dB1018Ec28AF9A34493",
+      "startBlock": 6924029
     },
     "WeightedPoolFactory": {
-      "address": "0x7c5E586ed4EC1793a6076FC0Dcad03Ca2442f7F8",
-      "startBlock": 6638995
+      "address": "0x4F12F60148F98aD920b99e844807F0e245f2AE58",
+      "startBlock": 6924094
     },
     "StablePoolFactory": {
-      "address": "0x2a55364B7948a460f9DEfFFc4440cB838A10dc26",
-      "startBlock": 6639020
+      "address": "0xD895059a81711e4955823ED2C0755F204A86E5DA",
+      "startBlock": 6924116
     }
   }
 }

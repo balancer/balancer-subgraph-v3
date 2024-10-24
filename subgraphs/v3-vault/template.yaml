@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: Vault
-    network: { { network } }
+    network: {{ network }}
     source:
       abi: Vault
       address: "{{ Vault.address }}"
-      startBlock: { { Vault.startBlock } }
+      startBlock: {{ Vault.startBlock }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -42,7 +42,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: BPT
-    network: { { network } }
+    network: {{ network }}
     source:
       abi: BPT
     mapping:

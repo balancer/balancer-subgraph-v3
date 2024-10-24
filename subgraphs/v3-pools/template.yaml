@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: WeightedPoolFactory
-    network: { { network } }
+    network: {{ network }}
     source:
       abi: BasePoolFactory
       address: "{{ WeightedPoolFactory.address }}"
-      startBlock: { { WeightedPoolFactory.startBlock } }
+      startBlock: {{ WeightedPoolFactory.startBlock }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -27,11 +27,11 @@ dataSources:
       file: ./src/mappings/weighted.ts
   - kind: ethereum
     name: StablePoolFactory
-    network: { { network } }
+    network: {{ network }}
     source:
       abi: BasePoolFactory
       address: "{{ StablePoolFactory.address }}"
-      startBlock: { { StablePoolFactory.startBlock } }
+      startBlock: {{ StablePoolFactory.startBlock }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
