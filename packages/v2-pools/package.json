@@ -1,0 +1,19 @@
+{
+  "name": "@subgraphs/v3-pools",
+  "private": true,
+  "scripts": {
+    "add-pool": "node scripts/cli.js",
+    "add-factory": "node scripts/cli.js",
+    "codegen": "graph codegen subgraph.base.yaml --output-dir src/types/",
+    "deploy": "graph deploy",
+    "build": "graph build",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.66.0",
+    "@graphprotocol/graph-ts": "0.32.0"
+  },
+  "devDependencies": {
+    "matchstick-as": "0.5.0"
+  }
+}

@@ -4,7 +4,7 @@
   "scripts": {
     "add-pool": "node scripts/cli.js",
     "add-factory": "node scripts/cli.js",
-    "codegen": "graph codegen subgraph.sepolia.yaml --output-dir src/types/",
+    "codegen": "graph codegen --output-dir src/types/",
     "deploy": "graph deploy",
     "build": "graph build",
     "test": "graph test"

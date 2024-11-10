@@ -1,0 +1,66 @@
+enum PoolType {
+  Composable
+  Weighted
+  GyroE
+}
+
+type Factory @entity {
+  "Unique identifier for the Factory"
+  id: Bytes!
+  "Address of the Factory contract"
+  address: Bytes!
+  "Type of pools this Factory creates"
+  type: PoolType!
+  "Version number of the Factory"
+  version: Int!
+  "Pools created by this Factory"
+  pools: [Pool!] @derivedFrom(field: "factory")
+}
+
+type WeightedParams @entity {
+  "Unique identifier for the WeightedPoolParams"
+  id: Bytes!
+  "Token weights for Weighted Pools"
+  weights: [BigDecimal!]!
+}
+
+type StableParams @entity {
+  "Unique identifier for the StablePoolParams"
+  id: Bytes!
+  "Amplification parameter for Stable Pools"
+  amp: BigInt!
+}
+
+type GyroEParams @entity {
+  "Unique identifier for the GyroEParams"
+  id: Bytes!
+  alpha: BigDecimal
+  beta: BigDecimal
+  lambda: BigDecimal
+  c: BigDecimal
+  s: BigDecimal
+  tauAlphaX: BigDecimal
+  tauAlphaY: BigDecimal
+  tauBetaX: BigDecimal
+  tauBetaY: BigDecimal
+  u: BigDecimal
+  v: BigDecimal
+  w: BigDecimal
+  z: BigDecimal
+  dSq: BigDecimal
+}
+
+type Pool @entity {
+  "Unique identifier for the Pool"
+  id: Bytes!
+  "Address of the Pool contract"
+  address: Bytes!
+  "Factory that created this Pool"
+  factory: Factory!
+  "Parameters for Weighted pools (null for other pool types)"
+  weightedParams: WeightedParams
+  "Parameters for Stable-like pools (null for other pool types)"
+  stableParams: StableParams
+  "Parameters for GyroE pools (null for other pool types)"
+  gyroEParams: GyroEParams
+}

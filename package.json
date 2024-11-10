@@ -5,7 +5,7 @@
     "generate-manifests": "node scripts/generate-manifests.js",
     "pools": "pnpm --filter @subgraphs/pools",
     "vault": "pnpm --filter @subgraphs/vault",
-    "codegen": "pnpm -r codegen"
+    "codegen": "pnpm -r codegen subgraph.sepolia.yaml"
   },
   "devDependencies": {
     "js-yaml": "^4.1.0"

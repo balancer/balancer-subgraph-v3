@@ -7,6 +7,8 @@ import {
   PoolBalanceChanged,
   PoolRegistered,
   Swap as SwapEvent,
+  Unwrap,
+  Wrap,
 } from "../types/Vault/Vault";
 import {
   Buffer,
@@ -53,6 +55,10 @@ export function handlePoolRegistered(event: PoolRegistered): void {
   pool.isInitialized = false;
   pool.swapsCount = ZERO_BI;
   pool.holdersCount = ZERO_BI;
+  pool.protocolSwapFee = ZERO_BD;
+  pool.protocolYieldFee = ZERO_BD;
+  pool.poolCreatorSwapFee = ZERO_BD;
+  pool.poolCreatorYieldFee = ZERO_BD;
 
   let poolContract = ERC20.bind(poolAddress);
   let symbolCall = poolContract.try_symbol();
@@ -406,7 +412,11 @@ export function handleBufferSharesMinted(event: BufferSharesMinted): void {
   createUser(event.params.to);
 
   let buffer = getBuffer(event.params.wrappedToken);
-  let issuedShares = scaleDown(event.params.issuedShares, 18);
+  let wrappedToken = getToken(changetype<Address>(buffer.wrappedToken));
+  let issuedShares = scaleDown(
+    event.params.issuedShares,
+    wrappedToken.decimals
+  );
   buffer.totalShares = buffer.totalShares.plus(issuedShares);
   buffer.save();
 
@@ -428,7 +438,11 @@ export function handleBufferSharesBurned(event: BufferSharesBurned): void {
   createUser(event.params.from);
 
   let buffer = getBuffer(event.params.wrappedToken);
-  let burnedShares = scaleDown(event.params.burnedShares, 18);
+  let wrappedToken = getToken(changetype<Address>(buffer.wrappedToken));
+  let burnedShares = scaleDown(
+    event.params.burnedShares,
+    wrappedToken.decimals
+  );
   buffer.totalShares = buffer.totalShares.minus(burnedShares);
   buffer.save();
 
@@ -444,4 +458,45 @@ export function handleBufferSharesBurned(event: BufferSharesBurned): void {
 
   bufferShare.balance = bufferShare.balance.minus(burnedShares);
   bufferShare.save();
+}
+
+export function handleUnwrap(event: Unwrap): void {
+  let buffer = getBuffer(event.params.wrappedToken);
+
+  let wrappedToken = getToken(changetype<Address>(buffer.wrappedToken));
+  let underlyingToken = getToken(changetype<Address>(buffer.underlyingToken));
+
+  let burnedShares = scaleDown(
+    event.params.burnedShares,
+    wrappedToken.decimals
+  );
+  let withdrawnUnderlying = scaleDown(
+    event.params.withdrawnUnderlying,
+    underlyingToken.decimals
+  );
+
+  buffer.underlyingBalance =
+    buffer.underlyingBalance.minus(withdrawnUnderlying);
+  buffer.wrappedBalance = buffer.wrappedBalance.plus(burnedShares);
+  buffer.save();
+}
+
+export function handleWrap(event: Wrap): void {
+  let buffer = getBuffer(event.params.wrappedToken);
+
+  let wrappedToken = getToken(changetype<Address>(buffer.wrappedToken));
+  let underlyingToken = getToken(changetype<Address>(buffer.underlyingToken));
+
+  let mintedShares = scaleDown(
+    event.params.mintedShares,
+    wrappedToken.decimals
+  );
+  let depositedUnderlying = scaleDown(
+    event.params.depositedUnderlying,
+    underlyingToken.decimals
+  );
+
+  buffer.underlyingBalance = buffer.underlyingBalance.plus(depositedUnderlying);
+  buffer.wrappedBalance = buffer.wrappedBalance.minus(mintedShares);
+  buffer.save();
 }

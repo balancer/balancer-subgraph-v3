@@ -51,6 +51,15 @@ type Pool @entity {
   "Indicates whether the Pool has been initialized"
   isInitialized: Boolean!
 
+  "Protocol swap fee percentage"
+  protocolSwapFee: BigDecimal!
+  "Protocol yield fee percentage"
+  protocolYieldFee: BigDecimal!
+  "Pool creator swap fee percentage"
+  poolCreatorSwapFee: BigDecimal!
+  "Pool creator yield fee percentage"
+  poolCreatorYieldFee: BigDecimal!
+
   "Total number of swaps performed in this Pool"
   swapsCount: BigInt!
   "Number of unique holders of this Pool's tokens"
