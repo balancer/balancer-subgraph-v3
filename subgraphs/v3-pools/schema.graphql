@@ -1,6 +1,7 @@
 enum PoolType {
   Weighted
   Stable
+  LBPool
 }
 
 type Factory @entity {
@@ -30,6 +31,21 @@ type StableParams @entity {
   amp: BigInt!
 }
 
+type LbpParams @entity {
+  "Unique identifier for the LBPoolParams"
+  id: Bytes!
+  "Start time for a gradual weight update"
+  startTime: BigInt!
+  "End time for a gradual weight update"
+  endTime: BigInt!
+  "Start weights for a gradual weight update"
+  startWeights: [BigDecimal!]!
+  "End weights for a gradual weight update"
+  endWeights: [BigDecimal!]!
+  "Indicates whether the pool is currently allowing swaps"
+  swapEnabledInternal: Boolean
+}
+
 type Pool @entity {
   "Unique identifier for the Pool"
   id: Bytes!
@@ -41,4 +57,6 @@ type Pool @entity {
   weightedParams: WeightedParams
   "Parameters for Stable pools (null for other pool types)"
   stableParams: StableParams
+  "Parameters for LBPools (null for other pool types)"
+  lbpParams: LbpParams
 }
