@@ -8,13 +8,27 @@ import { scaleDown } from "../helpers/math";
 
 function handleLBPoolParams(poolAddress: Address): Bytes {
   let lbPool = LBPool.bind(poolAddress);
-  let weightsResult = lbPool.try_getNormalizedWeights();
+  let normalizedWeightsResult = lbPool.try_getNormalizedWeights();
+  let gradualUpdateParamsResult = lbPool.try_getGradualWeightUpdateParams();
+  let swapEnabledResult = lbPool.try_getSwapEnabled();
+
   let lbpParams = new LbpParams(poolAddress);
-  if (lbResult.reverted) {
-    lbpParams.weights = weightsResult.value.map<BigDecimal>((weight) =>
+  if (!normalizedWeightsResult.reverted) {
+    lbpParams.startWeights = normalizedWeightsResult.value.map<BigDecimal>((weight) =>
       scaleDown(weight, 18)
     );
   }
+  if (!gradualUpdateParamsResult.reverted) {
+    lbpParams.startTime = gradualUpdateParamsResult.startTime;
+    lbpParams.endTime = gradualUpdateParamsResult.endTime;
+    lbpParams.endWeights = gradualUpdateParamsResult.endWeights.value.map<BigDecimal>((weight) =>
+      scaleDown(weight, 18)
+    );
+  }
+  if (!swapEnabledResult.reverted) {
+    lbpParams.swapEnabledResult = swapEnabledResult.swapEnabled;
+  }
+
   lbpParams.save();
   return lbpParams.id;
 }
