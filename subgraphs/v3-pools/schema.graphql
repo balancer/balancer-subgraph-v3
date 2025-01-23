@@ -1,6 +1,7 @@
 enum PoolType {
   Weighted
   Stable
+  QuantAMMWeighted
 }
 
 type Factory @entity {
@@ -30,6 +31,13 @@ type StableParams @entity {
   amp: BigInt!
 }
 
+type QuantAMMWeightedPoolDetails @entity {
+  "Unique identifier for the QuantAMMWeightedPoolDetails"
+  id: Bytes!
+  "QuantAMM Weighted Pool Detail array"
+  poolDetails: [[String!]!]!
+}
+
 type Pool @entity {
   "Unique identifier for the Pool"
   id: Bytes!
@@ -41,4 +49,6 @@ type Pool @entity {
   weightedParams: WeightedParams
   "Parameters for Stable pools (null for other pool types)"
   stableParams: StableParams
+  "Parameters for QuantAMMWeighted pools (null for other pool types)"
+  quantAMMWeightedParams: QuantAMMWeightedPoolDetails
 }

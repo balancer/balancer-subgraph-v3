@@ -48,3 +48,26 @@ dataSources:
         - event: PoolCreated(indexed address)
           handler: handleStablePoolCreated
       file: ./src/mappings/stable.ts
+  - kind: ethereum
+    name: QuantAMMWeightedPoolFactory
+    network: sepolia
+    source:
+      abi: QuantAMMWeightedPoolFactory
+      address: "0xD895059a81711e4955823ED2C0755F204A86E5DA" # TODO: replace with correct address
+      startBlock: 6924116 # TODO: replace with correct start block
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: QuantAMMWeightedPool
+          file: ./abis/QuantAMMWeightedPool.json
+        - name: QuantAMMWeightedPoolFactory
+          file: ./abis/QuantAMMWeightedPoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleQuantAMMWeightedPoolCreated
+      file: ./src/mappings/quantamm-weighted.ts

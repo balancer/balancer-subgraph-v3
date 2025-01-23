@@ -6,6 +6,7 @@ import { Pool } from "../types/schema";
 export namespace PoolType {
   export const Weighted = "Weighted";
   export const Stable = "Stable";
+  export const QuantAMMWeighted = "QuantAMMWeighted";
 }
 
 export function createBasePool(
