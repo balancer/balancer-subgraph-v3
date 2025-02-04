@@ -1,6 +1,7 @@
 enum PoolType {
   Weighted
   Stable
+  QuantAMMWeighted
   Gyro2
   GyroE
 }
@@ -30,6 +31,13 @@ type StableParams @entity {
   id: Bytes!
   "Amplification parameter for Stable Pools"
   amp: BigInt!
+}
+
+type QuantAMMWeightedPoolDetails @entity {
+  "Unique identifier for the QuantAMMWeightedPoolDetails"
+  id: Bytes!
+  "QuantAMM Weighted Pool Detail array"
+  poolDetails: [[String!]!]!
 }
 
 type Gyro2Params @entity {
@@ -69,6 +77,8 @@ type Pool @entity {
   weightedParams: WeightedParams
   "Parameters for Stable pools (null for other pool types)"
   stableParams: StableParams
+  "Parameters for QuantAMMWeighted pools (null for other pool types)"
+  quantAMMWeightedParams: QuantAMMWeightedPoolDetails
   "Parameters for Gyro2 pools (null for other pool types)"
   gyro2Params: Gyro2Params
   "Parameters for GyroE pools (null for other pool types)"
