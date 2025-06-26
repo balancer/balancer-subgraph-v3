@@ -4,10 +4,13 @@
   "scripts": {
     "add-pool": "node scripts/cli.js",
     "add-factory": "node scripts/cli.js",
-    "codegen": "graph codegen --output-dir src/types/",
+    "codegen:moksha": "graph codegen subgraph.moksha.yaml --output-dir src/types/ && graph build subgraph.moksha.yaml",
+    "codegen:sepolia": "graph codegen subgraph.sepolia.yaml --output-dir src/types/ && graph build subgraph.sepolia.yaml",
     "deploy": "graph deploy",
-    "build": "graph build",
-    "test": "graph test"
+    "deploy:moksha": "graph deploy symmetric-v-4-moksha-pools subgraph.moksha.yaml",
+    "deploy:sepolia": "graph deploy symmetric-v-4-sepolia-pools subgraph.sepolia.yaml",
+    "test": "graph test",
+    "build": "graph build"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.90.0",

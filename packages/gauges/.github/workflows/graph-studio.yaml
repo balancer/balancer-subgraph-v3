@@ -221,3 +221,26 @@ jobs:
           graph_account: "balancer-labs"
           graph_config_file: "subgraph.base.yaml"
           graph_deploy_studio: true
+  deploy-moksha:
+    runs-on: ubuntu-latest
+    environment: graph
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install
+        run: yarn --frozen-lockfile
+      - name: Codegen
+        run: yarn codegen
+      - name: Build
+        run: yarn build
+      - uses: balancer-labs/graph-deploy@v0.0.1
+        with:
+          graph_deploy_key: ${{secrets.GRAPH_DEPLOY_KEY}}
+          graph_version_label: ${GITHUB_SHA::8}
+          graph_subgraph_name: "balancer-gauges-moksha"
+          graph_account: "balancer-labs"
+          graph_config_file: "subgraph.moksha.yaml"
+          graph_deploy_studio: true

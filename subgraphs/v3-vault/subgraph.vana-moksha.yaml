@@ -6,11 +6,11 @@ indexerHints:
 dataSources:
   - kind: ethereum
     name: Vault
-    network: sepolia
+    network: vana-moksha
     source:
       abi: Vault
-      address: "0x1B05a29e8a61128A77DDa549Cc0589D80786f097"
-      startBlock: 8627151
+      address: "0xA8575572f108C57F70Ad5A42dc1d457dd678C34f"
+      startBlock: 3300003
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -58,7 +58,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: BPT
-    network: sepolia
+    network: vana-moksha
     source:
       abi: BPT
     mapping:
@@ -76,7 +76,7 @@ templates:
       file: ./src/mappings/bpt.ts
   - kind: ethereum
     name: ProtocolFeeController
-    network: sepolia
+    network: vana-moksha
     source:
       abi: ProtocolFeeController
     mapping:

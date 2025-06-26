@@ -1,4 +1,4 @@
-# Balancer v3 Subgraphs
+# Symmetric v4 Subgraphs
 
 This repository contains the subgraph implementations for Balancer v3, including pools and vault subgraphs. It's structured as a monorepo using pnpm workspaces.
 
@@ -6,10 +6,8 @@ This repository contains the subgraph implementations for Balancer v3, including
 
 | Subgraph | Version | Endpoint                                                                                  |
 | -------- | ------- | ----------------------------------------------------------------------------------------- |
-| Vault    | 10      | https://api.studio.thegraph.com/query/31386/balancer-v3-sepolia-10th/version/latest       |
-| Pools    | 10      | https://api.studio.thegraph.com/query/31386/balancer-pools-v3-sepolia-10th/version/latest |
-| Vault    | 9th     | https://api.studio.thegraph.com/query/31386/balancer-v3-sepolia-9th/version/latest        |
-| Pools    | 9th     | https://api.studio.thegraph.com/query/31386/balancer-pools-v3-sepolia-9th/version/latest  |
+| Vault    | 0.0.1   | https://api.studio.thegraph.com/query/87733/symmetric-v-4-sepolia-vault/version/latest    |
+| Pools    | 0.0.1   | https://api.studio.thegraph.com/query/87733/symmetric-v-4-sepolia-pools/version/latest    |
 
 ## Prerequisites
 
@@ -77,9 +75,11 @@ Deployment is handled automatically by GitHub Actions when pushing to the `main`
 To deploy manually, ensure you have the necessary credentials and run:
 
 ```
+pnpm pools codegen:sepolia
 pnpm pools build
-pnpm pools deploy
+pnpm pools deploy:sepolia
 
+pnpm vault codegen:sepolia
 pnpm vault build
-pnpm vault deploy
+pnpm vault deploy:sepolia
 ```

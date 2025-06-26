@@ -9,7 +9,7 @@ enum PoolType {
   ReClamm
 }
 
-type Factory @entity {
+type Factory @entity(immutable: false) {
   "Unique identifier for the Factory"
   id: Bytes!
   "Address of the Factory contract"
@@ -22,21 +22,21 @@ type Factory @entity {
   pools: [Pool!] @derivedFrom(field: "factory")
 }
 
-type WeightedParams @entity {
+type WeightedParams @entity(immutable: false) {
   "Unique identifier for the WeightedPoolParams"
   id: Bytes!
   "Token weights for Weighted Pools"
   weights: [BigDecimal!]!
 }
 
-type StableParams @entity {
+type StableParams @entity(immutable: false) {
   "Unique identifier for the StablePoolParams"
   id: Bytes!
   "Amplification parameter for Stable Pools"
   amp: BigInt!
 }
 
-type QuantAMMWeightedParams @entity {
+type QuantAMMWeightedParams @entity(immutable: false) {
   "Unique identifier for the QuantAMMWeightedParams"
   id: Bytes!
   "Oracle staleness threshold"
@@ -65,7 +65,7 @@ type QuantAMMWeightedParams @entity {
   details: [QuantAMMWeightedDetail!]! @derivedFrom(field: "pool")
 }
 
-type QuantAMMWeightedDetail @entity {
+type QuantAMMWeightedDetail @entity(immutable: false) {
   id: Bytes!
   category: String!
   name: String!
@@ -74,7 +74,7 @@ type QuantAMMWeightedDetail @entity {
   pool: QuantAMMWeightedParams!
 }
 
-type StableSurgeParams @entity {
+type StableSurgeParams @entity(immutable: false) {
   "Unique identifier for the StableSurgeParams"
   id: Bytes!
   "Amplification parameter"
@@ -85,14 +85,14 @@ type StableSurgeParams @entity {
   surgeThresholdPercentage: BigDecimal!
 }
 
-type Gyro2Params @entity {
+type Gyro2Params @entity(immutable: false) {
   "Unique identifier for the Gyro2Params"
   id: Bytes!
   sqrtAlpha: BigDecimal!
   sqrtBeta: BigDecimal!
 }
 
-type GyroEParams @entity {
+type GyroEParams @entity(immutable: false) {
   "Unique identifier for the GyroEParams"
   id: Bytes!
   alpha: BigDecimal!
@@ -111,7 +111,7 @@ type GyroEParams @entity {
   dSq: BigDecimal!
 }
 
-type LBPParams @entity {
+type LBPParams @entity(immutable: false) {
   "Unique identifier for the LBPParams"
   id: Bytes!
   "Owner of the LBP"
@@ -136,7 +136,7 @@ type LBPParams @entity {
   isProjectTokenSwapInBlocked: Boolean!
 }
 
-type ReClammParams @entity {
+type ReClammParams @entity(immutable: false) {
   "Unique identifier for the ReClammParams"
   id: Bytes!
   "The timestamp of the last user interaction"
@@ -161,7 +161,7 @@ type ReClammParams @entity {
   priceRatioUpdateEndTime: BigInt!
 }
 
-type Pool @entity {
+type Pool @entity(immutable: false) {
   "Unique identifier for the Pool"
   id: Bytes!
   "Address of the Pool contract"

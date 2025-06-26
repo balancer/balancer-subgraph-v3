@@ -97,32 +97,32 @@
   },
   "sepolia": {
     "Vault": {
-      "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 7212247
+      "address": "0x1B05a29e8a61128A77DDa549Cc0589D80786f097",
+      "startBlock": 8627151
     },
     "ProtocolFeeController": {
-      "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
-      "startBlock": 7212247
+      "address": "0xB956b2f1cab355cdbFe8F6f2956AF9837f3d3670",
+      "startBlock": 8627150
     },
     "WeightedPoolFactory": {
-      "address": "0x7532d5a3bE916e4a4D900240F49F0BABd4FD855C",
-      "startBlock": 7216947
+      "address": "0x86D931268e6DA244fB31dC29176870b4895EEf07",
+      "startBlock": 8627156
     },
     "StablePoolFactory": {
-      "address": "0xd67F485C07D258B3e93835a3799d862ffcB55923",
-      "startBlock": 7216947
+      "address": "0xe774503D310B2b9B2779E5370Aee833FD243a2F6",
+      "startBlock": 8627163
     },
     "StablePoolV2Factory": {
-      "address": "0xc274A11E09a3c92Ac64eAff5bEC4ee8f5dfEe207",
-      "startBlock": 7944011
+      "address": "0xe774503D310B2b9B2779E5370Aee833FD243a2F6",
+      "startBlock": 8627163
     },
     "Gyro2CLPPoolFactory": {
-      "address": "0x38ce8e04EBC04A39BED4b097e8C9bb8Ca74e33d8",
-      "startBlock": 8042511
+      "address": "0x9fE3c695BcB1F3769ED57A5A90F6dbea79C53B9C",
+      "startBlock": 8627159
     },
     "GyroECLPPoolFactory": {
-      "address": "0x589cA6855C348d831b394676c25B125BcdC7F8ce",
-      "startBlock": 7901684
+      "address": "0xbe734cb5f558F5FA437e954e175fE57A907655f0",
+      "startBlock": 8627160
     },
     "StableSurgeHook": {
       "address": "0x30CE53fA38a1399F0CA158b5c38362c80E423bA9",
@@ -133,16 +133,16 @@
       "startBlock": 8048919
     },
     "QuantAMMWeightedPoolFactory": {
-      "address": "0x7493F1AbeD1BdC6A160b62e676a5C44F8dFD7c60",
-      "startBlock": 8123674
+      "address": "0xc999190D240513e4cBCe9C13e6E63E72590AB519",
+      "startBlock": 8627162
     },
     "LBPoolFactory": {
-      "address": "0xA714753434481DbaBf7921963f18190636eCde69",
-      "startBlock": 7831623
+      "address": "0x09C0a3aD973CE4C25ABb9EdE0CB6E58CDEc53be1",
+      "startBlock": 8627161
     },
     "ReClammPoolFactory": {
-      "address": "0x2A4054779DaDf4Cf3F4849f1AC307845F182cfE5",
-      "startBlock": "8520198"
+      "address": "0x1b1d773006D246f8A58954c25d5D6dF39Ff3348F",
+      "startBlock": "8627158"
     }
   },
   "arbitrum-one": {
@@ -362,5 +362,55 @@
       "address": "0x0b11209B8c5E821b18dED147583b8978c3E63911",
       "startBlock": "136991947"
     }
-  }
+  },
+  "vana-moksha": {
+    "Vault": {
+      "address": "0xA8575572f108C57F70Ad5A42dc1d457dd678C34f",
+      "startBlock": 3300003
+    },
+    "ProtocolFeeController": {
+      "address": "0x11bb04A44e88Bb950b6b8c64396a5D3F5fD291A0",
+      "startBlock": 3300003
+    },
+    "WeightedPoolFactory": {
+      "address": "0xC889F43501DDf3Bd30a3821C3B40123ac64fD797",
+      "startBlock": 3300007
+    },
+    "StablePoolFactory": {
+      "address": "0xb8Cb89074BF463F7B4d70ED2aCA1277EC9e6107e",
+      "startBlock": 3300014
+    },
+    "StablePoolV2Factory": {
+      "address": "0xb8Cb89074BF463F7B4d70ED2aCA1277EC9e6107e",
+      "startBlock": 3300014
+    },
+    "Gyro2CLPPoolFactory": {
+      "address": "0x43b9C153649755C9b54f6FFAaF889FB49daFe904",
+      "startBlock": 3300010
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0x809d179cCD65558a9451d41F7B8b951e89BBa785",
+      "startBlock": 3192890
+    },
+    "StableSurgeHook": {
+      "address": "0xB4a1C3888Afc187Ea198632851ea5B3308fD8e68",
+      "startBlock": 3300011
+    },
+    "StableSurgeHookV2": {
+      "address": "0x7dfca838fD5fCd70f876431D41CaA3E3E2ea1520",
+      "startBlock": 3192880
+    },
+    "QuantAMMWeightedPoolFactory": {
+      "address": "0x078737a05a3Cc2A5A708D9ae829ecCbFC41C1DB1",
+      "startBlock": 3300013
+    },
+    "LBPoolFactory": {
+      "address": "0x7053A37c5ae36338cFb743B973998abC4DF10668",
+      "startBlock": 3300012
+    },
+    "ReClammPoolFactory": {
+      "address": "0x18edcEF2A786253DA2252E1B151fD3Efb26B5906",
+      "startBlock": 3300009
+    }
+}
 }

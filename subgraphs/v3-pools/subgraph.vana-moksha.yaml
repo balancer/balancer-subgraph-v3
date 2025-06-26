@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: WeightedPoolFactory
-    network: sepolia
+    network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0x86D931268e6DA244fB31dC29176870b4895EEf07"
-      startBlock: 8627156
+      address: "0xC889F43501DDf3Bd30a3821C3B40123ac64fD797"
+      startBlock: 3300007
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -27,11 +27,11 @@ dataSources:
       file: ./src/mappings/weighted.ts
   - kind: ethereum
     name: StablePoolFactory
-    network: sepolia
+    network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0xe774503D310B2b9B2779E5370Aee833FD243a2F6"
-      startBlock: 8627163
+      address: "0xb8Cb89074BF463F7B4d70ED2aCA1277EC9e6107e"
+      startBlock: 3300014
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -50,11 +50,11 @@ dataSources:
       file: ./src/mappings/stable.ts
   - kind: ethereum
     name: StablePoolV2Factory
-    network: sepolia
+    network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0xe774503D310B2b9B2779E5370Aee833FD243a2F6"
-      startBlock: 8627163
+      address: "0xb8Cb89074BF463F7B4d70ED2aCA1277EC9e6107e"
+      startBlock: 3300014
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -73,11 +73,11 @@ dataSources:
       file: ./src/mappings/stable.ts
   - kind: ethereum
     name: Gyro2CLPPoolFactory
-    network: sepolia
+    network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0x9fE3c695BcB1F3769ED57A5A90F6dbea79C53B9C"
-      startBlock: 8627159
+      address: "0x43b9C153649755C9b54f6FFAaF889FB49daFe904"
+      startBlock: 3300010
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -96,11 +96,11 @@ dataSources:
       file: ./src/mappings/gyro2.ts
   - kind: ethereum
     name: GyroECLPPoolFactory
-    network: sepolia
+    network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0xbe734cb5f558F5FA437e954e175fE57A907655f0"
-      startBlock: 8627160
+      address: "0x809d179cCD65558a9451d41F7B8b951e89BBa785"
+      startBlock: 3192890
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -119,11 +119,11 @@ dataSources:
       file: ./src/mappings/gyroE.ts
   - kind: ethereum
     name: StableSurgeHook
-    network: sepolia
+    network: vana-moksha
     source:
       abi: StableSurgeHook
-      address: "0x30CE53fA38a1399F0CA158b5c38362c80E423bA9"
-      startBlock: 7655004
+      address: "0xB4a1C3888Afc187Ea198632851ea5B3308fD8e68"
+      startBlock: 3300011
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -142,11 +142,11 @@ dataSources:
       file: ./src/mappings/surge.ts
   - kind: ethereum
     name: StableSurgeHookV2
-    network: sepolia
+    network: vana-moksha
     source:
       abi: StableSurgeHook
       address: "0x7dfca838fD5fCd70f876431D41CaA3E3E2ea1520"
-      startBlock: 8048919
+      startBlock: 3192880
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -165,11 +165,11 @@ dataSources:
       file: ./src/mappings/surge.ts
   - kind: ethereum
     name: QuantAMMWeightedPoolFactory
-    network: sepolia
+    network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0xc999190D240513e4cBCe9C13e6E63E72590AB519"
-      startBlock: 8627162
+      address: "0x078737a05a3Cc2A5A708D9ae829ecCbFC41C1DB1"
+      startBlock: 3300013
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -188,11 +188,11 @@ dataSources:
       file: ./src/mappings/quantamm.ts
   - kind: ethereum
     name: LBPoolFactory
-    network: sepolia
+    network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0x09C0a3aD973CE4C25ABb9EdE0CB6E58CDEc53be1"
-      startBlock: 8627161
+      address: "0x7053A37c5ae36338cFb743B973998abC4DF10668"
+      startBlock: 3300012
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -211,11 +211,11 @@ dataSources:
       file: ./src/mappings/lbp.ts
   - kind: ethereum
     name: ReClammPoolFactory
-    network: sepolia
+    network: vana-moksha
     source:
       abi: BasePoolFactory
-      address: "0x1b1d773006D246f8A58954c25d5D6dF39Ff3348F"
-      startBlock: 8627158
+      address: "0x18edcEF2A786253DA2252E1B151fD3Efb26B5906"
+      startBlock: 3300009
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -235,7 +235,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: ReClammPool
-    network: sepolia
+    network: vana-moksha
     source:
       abi: ReClammPool
     mapping:

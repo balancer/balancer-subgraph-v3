@@ -2,8 +2,11 @@
   "name": "@subgraphs/v3-vault",
   "private": true,
   "scripts": {
-    "codegen": "graph codegen --output-dir src/types/",
+    "codegen:moksha": "graph codegen subgraph.moksha.yaml --output-dir src/types/ && graph build subgraph.moksha.yaml",
+    "codegen:sepolia": "graph codegen subgraph.sepolia.yaml --output-dir src/types/ && graph build subgraph.sepolia.yaml",
     "deploy": "graph deploy",
+    "deploy:moksha": "graph deploy symmetric-v-4-moksha-vault subgraph.moksha.yaml",
+    "deploy:sepolia": "graph deploy symmetric-v-4-sepolia-vault subgraph.sepolia.yaml",
     "build": "graph build",
     "test": "graph test"
   },

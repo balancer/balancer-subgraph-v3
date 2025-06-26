@@ -78,3 +78,12 @@ jobs:
       manifest-file: subgraph.optimism.yaml
     secrets:
       GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
+
+  deploy-moksha:
+    uses: ./.github/workflows/deploy-subgraph.yml
+    with:
+      working-directory: subgraphs/v3-vault
+      subgraph-name: balancer-v3-moksha
+      manifest-file: subgraph.moksha.yaml
+    secrets:
+      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}

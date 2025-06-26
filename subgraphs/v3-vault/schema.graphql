@@ -1,4 +1,4 @@
-type Vault @entity {
+type Vault @entity(immutable: false) {
   "Unique identifier for the Vault"
   id: Bytes!
   "Address of the authorizer"
@@ -15,7 +15,7 @@ type Vault @entity {
   pools: [Pool!] @derivedFrom(field: "vault")
 }
 
-type Pool @entity {
+type Pool @entity(immutable: false) {
   "Unique identifier for the Pool"
   id: Bytes!
   "The Vault this Pool belongs to"
@@ -84,7 +84,7 @@ type Pool @entity {
   snapshots: [PoolSnapshot!]! @derivedFrom(field: "pool")
 }
 
-type Hook @entity {
+type Hook @entity(immutable: false) {
   "Unique identifier for the Hook"
   id: Bytes!
   "Address of the Hook"
@@ -93,7 +93,7 @@ type Hook @entity {
   pools: [Pool!] @derivedFrom(field: "hook")
 }
 
-type HookConfig @entity {
+type HookConfig @entity(immutable: false) {
   "Unique identifier for the HookConfig"
   id: Bytes!
   "The Pool this HookConfig is associated with"
@@ -122,7 +122,7 @@ type HookConfig @entity {
   shouldCallAfterRemoveLiquidity: Boolean!
 }
 
-type LiquidityManagement @entity {
+type LiquidityManagement @entity(immutable: false) {
   "Unique identifier for the LiquidityManagement"
   id: Bytes!
   "The Pool this LiquidityManagement is associated with"
@@ -137,7 +137,7 @@ type LiquidityManagement @entity {
   enableDonation: Boolean!
 }
 
-type PoolToken @entity {
+type PoolToken @entity(immutable: false) {
   "Unique identifier for the PoolToken"
   id: Bytes!
   "The Pool this token belongs to"
@@ -188,7 +188,7 @@ type PoolToken @entity {
   vaultProtocolYieldFeeBalance: BigDecimal!
 }
 
-type Token @entity {
+type Token @entity(immutable: false) {
   "Unique identifier for the Token"
   id: Bytes!
   "Name of the token"
@@ -201,7 +201,7 @@ type Token @entity {
   address: Bytes!
 }
 
-type RateProvider @entity {
+type RateProvider @entity(immutable: false) {
   "Unique identifier for the RateProvider"
   id: Bytes!
   "The Pool this RateProvider is associated with"
@@ -212,7 +212,7 @@ type RateProvider @entity {
   address: Bytes!
 }
 
-type Buffer @entity {
+type Buffer @entity(immutable: false) {
   "Unique identifier for the Buffer"
   id: Bytes!
   "The wrapped token in this Buffer"
@@ -227,7 +227,7 @@ type Buffer @entity {
   totalShares: BigDecimal!
 }
 
-type BufferShare @entity {
+type BufferShare @entity(immutable: false) {
   "Unique identifier for the BufferShare"
   id: Bytes!
   "The user who owns this share"
@@ -307,7 +307,7 @@ type AddRemove @entity(immutable: true) {
   logIndex: BigInt!
 }
 
-type PoolShare @entity {
+type PoolShare @entity(immutable: false) {
   "Unique identifier for the PoolShare"
   id: ID!
   "The Pool this share is for"
@@ -318,7 +318,7 @@ type PoolShare @entity {
   balance: BigDecimal!
 }
 
-type PoolSnapshot @entity {
+type PoolSnapshot @entity(immutable: false) {
   "Unique identifier for the PoolSnapshot"
   id: ID!
   "The Pool this snapshot is for"
@@ -347,7 +347,7 @@ type PoolSnapshot @entity {
   totalProtocolYieldFees: [BigDecimal!]!
 }
 
-type User @entity {
+type User @entity(immutable: false) {
   "Unique identifier for the User (typically their address)"
   id: Bytes!
   "Swaps performed by this user"

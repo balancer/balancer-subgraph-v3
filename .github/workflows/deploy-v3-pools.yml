@@ -75,6 +75,15 @@ jobs:
     with:
       working-directory: subgraphs/v3-pools
       subgraph-name: balancer-pools-v3-optimism
-      manifest-file: subgraph.optimism.yaml
+      manifest-file: subgraph.moksha.yaml
+    secrets:
+      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
+
+  deploy-moksha:
+    uses: ./.github/workflows/deploy-subgraph.yml
+    with:
+      working-directory: subgraphs/v3-pools
+      subgraph-name: symmetric-pools-v3-moksha
+      manifest-file: subgraph.moksha.yaml
     secrets:
       GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
