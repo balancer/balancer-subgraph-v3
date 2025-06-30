@@ -37,7 +37,7 @@ function replacePlaceholders(template, network, networkData) {
   const template = fs.readFileSync(templatePath, 'utf8');
   Object.entries(networksData).forEach(([network, networkData]) => {
     const config = replacePlaceholders(template, network, networkData);
-    const outputPath = path.join('subgraphs', subgraph, `subgraph${network === 'mainnet' ? '' : `.${network}`}.yaml`);
+    const outputPath = path.join('subgraphs', subgraph, `subgraph.${network}.yaml`);
     fs.writeFileSync(outputPath, config);
     console.log(`Generated ${outputPath}`);
   });
