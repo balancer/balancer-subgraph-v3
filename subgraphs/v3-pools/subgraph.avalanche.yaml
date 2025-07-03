@@ -186,3 +186,30 @@ dataSources:
         - event: PoolCreated(indexed address)
           handler: handleReClammPoolV2Created
       file: ./src/mappings/reclamm.ts
+templates:
+  - kind: ethereum/contract
+    name: ReClammPool
+    network: avalanche
+    source:
+      abi: ReClammPool
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ReClammParams
+      abis:
+        - name: ReClammPool
+          file: ./abis/ReClammPool.json
+      eventHandlers:
+        - event: CenterednessMarginUpdated(uint256)
+          handler: handleReClammCenterednessMarginUpdated
+        - event: LastTimestampUpdated(uint32)
+          handler: handleReClammLastTimestampUpdated
+        - event: PriceRatioStateUpdated(uint256,uint256,uint256,uint256)
+          handler: handleReClammPriceRatioStateUpdated
+        - event: DailyPriceShiftExponentUpdated(uint256,uint256)
+          handler: handleReClammDailyPriceShiftExponentUpdated
+        - event: VirtualBalancesUpdated(uint256,uint256)
+          handler: handleReClammVirtualBalancesUpdated
+      file: ./src/mappings/reclamm.ts

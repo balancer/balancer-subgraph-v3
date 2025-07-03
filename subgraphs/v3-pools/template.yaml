@@ -277,7 +277,7 @@ dataSources:
           handler: handleReClammPoolV2Created
       file: ./src/mappings/reclamm.ts
   {{/if}}
-{{#if ReClammPoolFactory || ReClammPoolV2Factory}}
+{{#if ReClammPoolFactory}}
 templates:
   - kind: ethereum/contract
     name: ReClammPool
