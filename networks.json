@@ -47,6 +47,10 @@
     "ReClammPoolFactory": {
       "address": "0x5939ab16fDf1991B0EF603c639B6b501A7841fAB",
       "startBlock": "22676210"
+    },
+    "ReClammPoolV2Factory": {
+      "address": "0xDaa273AeEc06e9CCb7428a77E2abb1E4659B16D2",
+      "startBlock": "22832233"
     }
   },
   "gnosis": {
@@ -93,6 +97,10 @@
     "ReClammPoolFactory": {
       "address": "0x1780e8185199DAc45284039Bb3E3B64060D943AB",
       "startBlock": "40516797"
+    },
+    "ReClammPoolV2Factory": {
+      "address": "0xc86eF81E57492BE65BFCa9b0Ed53dCBAfDBe6100",
+      "startBlock": "40884126"
     }
   },
   "sepolia": {
@@ -143,6 +151,10 @@
     "ReClammPoolFactory": {
       "address": "0x2A4054779DaDf4Cf3F4849f1AC307845F182cfE5",
       "startBlock": "8520198"
+    },
+    "ReClammPoolV2Factory": {
+      "address": "0xf58A574530Ea5cEB727095e6039170c1e8068fcA",
+      "startBlock": "8676768"
     }
   },
   "arbitrum-one": {
@@ -193,6 +205,10 @@
     "ReClammPoolFactory": {
       "address": "0xa1D0791a41318c775707C56eAe247AF81a05322C",
       "startBlock": "345984008"
+    },
+    "ReClammPoolV2Factory": {
+      "address": "0x355bD33F0033066BB3DE396a6d069be57353AD95",
+      "startBlock": "353502388"
     }
   },
   "base": {
@@ -243,6 +259,10 @@
     "ReClammPoolFactory": {
       "address": "0x3BEb058DE1A25dd24223fd9e1796df8589429AcE",
       "startBlock": "31396631"
+    },
+    "ReClammPoolV2Factory": {
+      "address": "0x201efd508c8DfE9DE1a13c2452863A78CB2a86Cc",
+      "startBlock": "32339174"
     }
   },
   "sonic": {
@@ -323,6 +343,10 @@
     "ReClammPoolFactory": {
       "address": "0x1CD776897ef4f647bf8241Ec69549e4A9cb1D608",
       "startBlock": "63645408"
+    },
+    "ReClammPoolV2Factory": {
+      "address": "0x309abcAeFa19CA6d34f0D8ff4a4103317c138657",
+      "startBlock": "64832650"
     }
   },
   "optimism": {
@@ -361,6 +385,10 @@
     "ReClammPoolFactory": {
       "address": "0x0b11209B8c5E821b18dED147583b8978c3E63911",
       "startBlock": "136991947"
+    },
+    "ReClammPoolV2Factory": {
+      "address": "0x891EC9B34829276a9a8ef2F8A9cEAF2486017e0d",
+      "startBlock": "137934460"
     }
   }
 }

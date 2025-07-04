@@ -252,6 +252,31 @@ dataSources:
           handler: handleReClammPoolCreated
       file: ./src/mappings/reclamm.ts
   {{/if}}
+  {{#if ReClammPoolV2Factory}}
+  - kind: ethereum
+    name: ReClammPoolV2Factory
+    network: {{ network }}
+    source:
+      abi: BasePoolFactory
+      address: "{{ ReClammPoolV2Factory.address }}"
+      startBlock: {{ ReClammPoolV2Factory.startBlock }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: ReClammPool
+          file: ./abis/ReClammPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleReClammPoolV2Created
+      file: ./src/mappings/reclamm.ts
+  {{/if}}
 {{#if ReClammPoolFactory}}
 templates:
   - kind: ethereum/contract
