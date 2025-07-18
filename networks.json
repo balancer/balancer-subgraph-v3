@@ -305,6 +305,10 @@
     "QuantAMMWeightedPoolFactory": {
       "address": "0x60006d255569b36a3d494e83D182b57acd04D484",
       "startBlock": 31661323
+    },
+    "ReClammPoolV2Factory": {
+      "address": "0x99c13B259138a8ad8badbBfB87A4074591310De0",
+      "startBlock": "38897147"
     }
   },
   "avalanche": {
