@@ -50,7 +50,10 @@ export function handlePoolHookCreated(
   paramHandler: (poolAddress: Address, hookAddress: Address) => Bytes,
   paramField: string
 ): void {
-  let pool = createBasePool(poolAddress, factoryAddress, poolType, version);
+  let pool = Pool.load(poolAddress);
+  if (pool) return;
+
+  pool = createBasePool(poolAddress, factoryAddress, poolType, version);
   let params = paramHandler(poolAddress, hookAddress);
   pool.set(paramField, Value.fromBytes(params));
   pool.save();
