@@ -3,6 +3,7 @@ enum PoolType {
   Stable
   QuantAMMWeighted
   StableSurge
+  HyperSurge
   Gyro2
   GyroE
   LBP
@@ -83,6 +84,45 @@ type StableSurgeParams @entity {
   maxSurgeFeePercentage: BigDecimal!
   "Surge threshold percentage"
   surgeThresholdPercentage: BigDecimal!
+}
+
+type HyperSurgeParams @entity {
+  "Unique identifier for the HyperSurgeParams (recommended: pool address)"
+  id: Bytes!
+
+  "Number of tokens configured for oracle mapping (0..8)"
+  numTokens: Int!
+
+  "ARBITRAGE: Maximum surge fee percentage"
+  arbMaxSurgeFeePercentage: BigDecimal!
+  "ARBITRAGE: Surge threshold percentage (fees start ramping above this)"
+  arbSurgeThresholdPercentage: BigDecimal!
+  "ARBITRAGE: Deviation cap percentage (fee reaches max at this deviation)"
+  arbCapDeviationPercentage: BigDecimal!
+
+  "NOISE: Maximum surge fee percentage"
+  noiseMaxSurgeFeePercentage: BigDecimal!
+  "NOISE: Surge threshold percentage (fees start ramping above this)"
+  noiseSurgeThresholdPercentage: BigDecimal!
+  "NOISE: Deviation cap percentage (fee reaches max at this deviation)"
+  noiseCapDeviationPercentage: BigDecimal!
+
+  "Per-token external price configuration"
+  tokenPriceConfigs: [HyperSurgeTokenPriceConfig!]! @derivedFrom(field: "params")
+}
+
+type HyperSurgeTokenPriceConfig @entity {
+  "Unique identifier (e.g., params.id + '/' + tokenIndex)"
+  id: Bytes!
+  "Back-reference to the HyperSurgeParams"
+  params: HyperSurgeParams!
+
+  "Balancer token index within the pool (0..7)"
+  tokenIndex: Int!
+  "External oracle/pair index used for this token"
+  pairIndex: Int!
+  "Price divisor applied to the external price (derived from on-chain size/decimals)"
+  priceDivisor: Int!
 }
 
 type Gyro2Params @entity {
@@ -174,6 +214,8 @@ type Pool @entity {
   stableParams: StableParams
   "Parameters for StableSurge pools (null for other pool types)"
   stableSurgeParams: StableSurgeParams
+  "Parameters for HyperSurge pools (null for other pool types)"
+  hyperSurgeParams: HyperSurgeParams
   "Parameters for Gyro2 pools (null for other pool types)"
   gyro2Params: Gyro2Params
   "Parameters for GyroE pools (null for other pool types)"
