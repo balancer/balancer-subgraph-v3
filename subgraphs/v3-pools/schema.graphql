@@ -74,6 +74,26 @@ type QuantAMMWeightedDetail @entity {
   pool: QuantAMMWeightedParams!
 }
 
+type QuantAMMIntermediateValue @entity {
+  id: ID!              # pool:kind:index:blockNumber
+  pool: Bytes!
+  kind: String!        # "gradient"
+  index: Int!
+  value: BigInt!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
+type QuantAMMIntermediateLatest @entity {
+  id: ID!              # pool:kind:index
+  pool: Bytes!
+  kind: String!
+  index: Int!
+  value: BigInt!
+  blockNumber: BigInt!
+  timestamp: BigInt!
+}
+
 type StableSurgeParams @entity {
   "Unique identifier for the StableSurgeParams"
   id: Bytes!
