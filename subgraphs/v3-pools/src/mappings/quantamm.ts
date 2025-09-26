@@ -1,8 +1,11 @@
-import { Address, Bytes } from "@graphprotocol/graph-ts";
+import { Address, Bytes, BigInt } from "@graphprotocol/graph-ts";
 
 import { handlePoolCreated, PoolType } from "./common";
 import { PoolCreated } from "../types/QuantAMMWeightedPoolFactory/BasePoolFactory";
 import { QuantAMMWeightedPool } from "../types/QuantAMMWeightedPoolFactory/QuantAMMWeightedPool";
+import { UpdateWeightRunner as RunnerContract } from "../types/QuantAMMWeightedPoolFactory/UpdateWeightRunner";
+import { QuantAMMGradientBasedRule as RuleContract } from "../types/QuantAMMWeightedPoolFactory/QuantAMMGradientBasedRule";
+
 import {
   QuantAMMWeightedDetail,
   QuantAMMWeightedParams,
@@ -24,26 +27,30 @@ import {
  *
  */
 const CATEGORIES = ["overview", "ruleDetail"];
-
 const NAMES = [["adaptabilityScore", "description"], ["updateRuleName"]];
 
+function getNumberOfAssets(pool: QuantAMMWeightedPool): number {
+  const info = pool.getTokenInfo(); // (tokens, tokenInfo, balancesRaw, lastBalancesLiveScaled18)
+  return info.value0.length;
+}
+
 function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
-  let pool = QuantAMMWeightedPool.bind(poolAddress);
-  let params = new QuantAMMWeightedParams(poolAddress);
+  const pool = QuantAMMWeightedPool.bind(poolAddress);
+  const params = new QuantAMMWeightedParams(poolAddress);
 
   for (let i = 0; i < CATEGORIES.length; i++) {
-    let category = CATEGORIES[i];
-    let names = NAMES[i];
+    const category = CATEGORIES[i];
+    const names = NAMES[i];
 
     for (let j = 0; j < names.length; j++) {
-      let name = names[j];
-      let poolDetailResult = pool.try_getPoolDetail(category, name);
+      const name = names[j];
+      const poolDetailResult = pool.try_getPoolDetail(category, name);
 
       if (poolDetailResult.reverted) continue;
       if (poolDetailResult.value.value0 == "") continue;
       if (poolDetailResult.value.value1 == "") continue;
 
-      let details = new QuantAMMWeightedDetail(
+      const details = new QuantAMMWeightedDetail(
         poolAddress.concatI32(i).concatI32(j)
       );
 
@@ -55,8 +62,7 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
       details.save();
     }
   }
-
-  let immutableData = pool.getQuantAMMWeightedPoolImmutableData();
+  const immutableData = pool.getQuantAMMWeightedPoolImmutableData();
   params.absoluteWeightGuardRail = immutableData.absoluteWeightGuardRail;
   params.oracleStalenessThreshold = immutableData.oracleStalenessThreshold;
   params.maxTradeSizeRatio = immutableData.maxTradeSizeRatio;
@@ -65,7 +71,8 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
   params.epsilonMax = immutableData.epsilonMax;
   params.lambda = immutableData.lambda;
 
-  let dynamicData = pool.getQuantAMMWeightedPoolDynamicData();
+  // Dynamic parameters
+  const dynamicData = pool.getQuantAMMWeightedPoolDynamicData();
   params.weightsAtLastUpdateInterval =
     dynamicData.firstFourWeightsAndMultipliers
       .slice(0, 4)
@@ -75,6 +82,22 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
     .concat(dynamicData.secondFourWeightsAndMultipliers.slice(4, 8));
   params.lastInterpolationTimePossible = dynamicData.lastInteropTime;
   params.lastUpdateIntervalTime = dynamicData.lastUpdateTime;
+  
+  const numberOfAssets = getNumberOfAssets(pool);
+  const runnerAddr = pool.updateWeightRunner();
+
+  const runner = RunnerContract.bind(runnerAddr);
+  const ruleAddr = runner.getPoolRule(poolAddress);
+
+  const rule = RuleContract.bind(ruleAddr);
+  const ints = rule.getIntermediateGradientState(
+    poolAddress,
+    BigInt.fromI32(numberOfAssets)
+  );
+
+  params.runner = runnerAddr;
+  params.rule = ruleAddr;
+  params.gradientIntermediates = ints;
 
   params.save();
 
