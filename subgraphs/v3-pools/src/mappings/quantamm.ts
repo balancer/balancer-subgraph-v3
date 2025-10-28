@@ -82,7 +82,7 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
     .concat(dynamicData.secondFourWeightsAndMultipliers.slice(4, 8));
   params.lastInterpolationTimePossible = dynamicData.lastInteropTime;
   params.lastUpdateIntervalTime = dynamicData.lastUpdateTime;
-  
+
   const numberOfAssets = getNumberOfAssets(pool);
   const runnerAddr = pool.updateWeightRunner();
 
@@ -92,7 +92,7 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
   const rule = RuleContract.bind(ruleAddr);
   const ints = rule.getIntermediateGradientState(
     poolAddress,
-    BigInt.fromI32(numberOfAssets)
+    BigInt.fromI32(numberOfAssets as i32)
   );
 
   params.runner = runnerAddr;
