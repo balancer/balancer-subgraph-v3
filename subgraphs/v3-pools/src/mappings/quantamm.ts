@@ -90,14 +90,14 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
   const ruleAddr = runner.getPoolRule(poolAddress);
 
   const rule = RuleContract.bind(ruleAddr);
-  const ints = rule.getIntermediateGradientState(
+  const ints = rule.try_getIntermediateGradientState(
     poolAddress,
     BigInt.fromI32(numberOfAssets as i32)
   );
 
-  params.runner = runnerAddr;
   params.rule = ruleAddr;
-  params.gradientIntermediates = ints;
+  params.runner = runnerAddr;
+  if (!ints.reverted) params.gradientIntermediates = ints.value;
 
   params.save();
 

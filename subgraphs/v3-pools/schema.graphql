@@ -62,11 +62,11 @@ type QuantAMMWeightedParams @entity {
   "Last interpolation time possible"
   lastInterpolationTimePossible: BigInt!
   "address of UpdateWeightRunner for this pool (pool.updateWeightRunner())"
-  runner: Bytes              
+  runner: Bytes!
   "address of the active rule (UpdateWeightRunner.getPoolRule(pool))"
-  rule: Bytes                
+  rule: Bytes!
   "#int256[] from rule.getIntermediateGradientState(pool, numberOfAssets)"
-  gradientIntermediates: [BigInt!]  
+  gradientIntermediates: [BigInt!]
   "Pool details array"
   details: [QuantAMMWeightedDetail!]! @derivedFrom(field: "pool")
 }
