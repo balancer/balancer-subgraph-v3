@@ -4,7 +4,8 @@ import { handlePoolCreated, PoolType } from "./common";
 import { PoolCreated } from "../types/QuantAMMWeightedPoolFactory/BasePoolFactory";
 import { QuantAMMWeightedPool } from "../types/QuantAMMWeightedPoolFactory/QuantAMMWeightedPool";
 import { UpdateWeightRunner as RunnerContract } from "../types/QuantAMMWeightedPoolFactory/UpdateWeightRunner";
-import { QuantAMMGradientBasedRule as RuleContract } from "../types/QuantAMMWeightedPoolFactory/QuantAMMGradientBasedRule";
+import { QuantAMMGradientBasedRule as GradientRuleContract } from "../types/QuantAMMWeightedPoolFactory/QuantAMMGradientBasedRule";
+import { QuantAMMMathMovingAverage as AveragesRuleContract } from "../types/QuantAMMWeightedPoolFactory/QuantAMMMathMovingAverage";
 
 import {
   QuantAMMWeightedDetail,
@@ -89,15 +90,22 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
   const runner = RunnerContract.bind(runnerAddr);
   const ruleAddr = runner.getPoolRule(poolAddress);
 
-  const rule = RuleContract.bind(ruleAddr);
-  const ints = rule.getIntermediateGradientState(
+  const gradientRule = GradientRuleContract.bind(ruleAddr);
+  const gradients = gradientRule.getIntermediateGradientState(
+    poolAddress,
+    BigInt.fromI32(numberOfAssets)
+  );
+
+  const averagesRule = AveragesRuleContract.bind(ruleAddr);
+  const averages = averagesRule.getMovingAverages(
     poolAddress,
     BigInt.fromI32(numberOfAssets)
   );
 
   params.runner = runnerAddr;
   params.rule = ruleAddr;
-  params.gradientIntermediates = ints;
+  params.gradientIntermediates = gradients;
+  params.movingAverageIntermediates = averages;
 
   params.save();
 

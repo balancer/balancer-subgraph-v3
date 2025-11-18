@@ -67,6 +67,8 @@ type QuantAMMWeightedParams @entity {
   rule: Bytes                
   "#int256[] from rule.getIntermediateGradientState(pool, numberOfAssets)"
   gradientIntermediates: [BigInt!]  
+  "#int256[] from rule.getMovingAverages(pool, numberOfAssets)"
+  movingAverageIntermediates: [BigInt!]  
   "Pool details array"
   details: [QuantAMMWeightedDetail!]! @derivedFrom(field: "pool")
 }
