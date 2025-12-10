@@ -78,3 +78,12 @@ jobs:
       manifest-file: subgraph.optimism.yaml
     secrets:
       GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
+    
+  deploy-xlayer:
+    uses: ./.github/workflows/deploy-subgraph.yml
+    with:
+      working-directory: subgraphs/v3-vault
+      subgraph-name: balancer-v-3-x-layer
+      manifest-file: subgraph.xlayer-mainnet.yaml
+    secrets:
+      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
