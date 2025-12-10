@@ -42,6 +42,10 @@ dataSources:
           handler: handleLiquidityAddedToBuffer
         - event: LiquidityRemovedFromBuffer(indexed address,uint256,uint256,bytes32)
           handler: handleLiquidityRemovedFromBuffer
+        - event: BufferSharesMinted(indexed address,indexed address,uint256)
+          handler: handleBufferSharesMinted
+        - event: BufferSharesBurned(indexed address,indexed address,uint256)
+          handler: handleBufferSharesBurned
         - event: Wrap(indexed address,uint256,uint256,bytes32)
           handler: handleWrap
         - event: Unwrap(indexed address,uint256,uint256,bytes32)
