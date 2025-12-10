@@ -93,13 +93,13 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
   const gradientRule = GradientRuleContract.bind(ruleAddr);
   const gradients = gradientRule.try_getIntermediateGradientState(
     poolAddress,
-    BigInt.fromI32(numberOfAssets)
+    BigInt.fromI32(i32(numberOfAssets))
   );
 
   const averagesRule = AveragesRuleContract.bind(ruleAddr);
   const averages = averagesRule.try_getMovingAverages(
     poolAddress,
-    BigInt.fromI32(numberOfAssets)
+    BigInt.fromI32(i32(numberOfAssets))
   );
 
   params.rule = ruleAddr;
