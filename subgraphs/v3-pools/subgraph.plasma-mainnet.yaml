@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: WeightedPoolFactory
-    network: sonic
+    network: plasma-mainnet
     source:
       abi: BasePoolFactory
-      address: "0x4726Eb55c37F0353F6d5011B5652d44A87d60fc3"
-      startBlock: 381432
+      address: "0xf23b4DB826DbA14c0e857029dfF076b1c0264843"
+      startBlock: 782589
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -26,35 +26,12 @@ dataSources:
           handler: handleWeightedPoolCreated
       file: ./src/mappings/weighted.ts
   - kind: ethereum
-    name: StablePoolFactory
-    network: sonic
-    source:
-      abi: BasePoolFactory
-      address: "0x815Ab57a5a2E4976cEC0b43C2D50CF26EF6F31Fd"
-      startBlock: 381473
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Factory
-        - Pool
-      abis:
-        - name: StablePool
-          file: ./abis/StablePool.json
-        - name: BasePoolFactory
-          file: ./abis/BasePoolFactory.json
-      eventHandlers:
-        - event: PoolCreated(indexed address)
-          handler: handleStablePoolCreated
-      file: ./src/mappings/stable.ts
-  - kind: ethereum
     name: StablePoolV2Factory
-    network: sonic
+    network: plasma-mainnet
     source:
       abi: BasePoolFactory
-      address: "0x482eE54595f79B6BA34b75754A4983134148Affb"
-      startBlock: 17236613
+      address: "0x81cFAE226343B24BA12EC6521Db2C79E7aeeb310"
+      startBlock: 783595
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -73,11 +50,11 @@ dataSources:
       file: ./src/mappings/stable.ts
   - kind: ethereum
     name: Gyro2CLPPoolFactory
-    network: sonic
+    network: plasma-mainnet
     source:
       abi: BasePoolFactory
-      address: "0x4D1F5C8E3A7B9C6D5FfE0dA4aB1b8c7e9D2F3b6B"
-      startBlock: 17236613
+      address: "0x9dd5Db2d38b50bEF682cE532bCca5DfD203915E1"
+      startBlock: 782862
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -96,11 +73,11 @@ dataSources:
       file: ./src/mappings/gyro2.ts
   - kind: ethereum
     name: GyroECLPPoolFactory
-    network: sonic
+    network: plasma-mainnet
     source:
       abi: BasePoolFactory
-      address: "0xf023731dD8758D7C869af10005e6380Cb57775a9"
-      startBlock: 14211027
+      address: "0xE3881627B8DeeBCCF9c23B291430a549Fc0bE5F7"
+      startBlock: 783147
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -118,35 +95,12 @@ dataSources:
           handler: handleGyroEPoolCreated
       file: ./src/mappings/gyroE.ts
   - kind: ethereum
-    name: StableSurgeHook
-    network: sonic
-    source:
-      abi: StableSurgeHook
-      address: "0x8A83Aa9bb7C4Cff14ae0aEcec0fB9ef234901c0C"
-      startBlock: 8689860
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Factory
-        - Pool
-      abis:
-        - name: StablePool
-          file: ./abis/StablePool.json
-        - name: StableSurgeHook
-          file: ./abis/StableSurgeHook.json
-      eventHandlers:
-        - event: StableSurgeHookRegistered(indexed address,indexed address)
-          handler: handleStableSurgeHookRegistered
-      file: ./src/mappings/surge.ts
-  - kind: ethereum
     name: StableSurgeHookV2
-    network: sonic
+    network: plasma-mainnet
     source:
       abi: StableSurgeHook
-      address: "0x049919Ae32E50aEe5ea1A0998a841d175ec6f1b3"
-      startBlock: 20504697
+      address: "0x6817149cb753BF529565B4D023d7507eD2ff4Bc0"
+      startBlock: 783858
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -164,41 +118,12 @@ dataSources:
           handler: handleStableSurgeHookV2Registered
       file: ./src/mappings/surge.ts
   - kind: ethereum
-    name: QuantAMMWeightedPoolFactory
-    network: sonic
-    source:
-      abi: BasePoolFactory
-      address: "0x60006d255569b36a3d494e83D182b57acd04D484"
-      startBlock: 31661323
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Factory
-        - Pool
-      abis:
-        - name: QuantAMMWeightedPool
-          file: ./abis/QuantAMMWeightedPool.json
-        - name: BasePoolFactory
-          file: ./abis/BasePoolFactory.json
-        - name: UpdateWeightRunner
-          file: ./abis/UpdateWeightRunner.json
-        - name: QuantAMMGradientBasedRule
-          file: ./abis/QuantAMMGradientBasedRule.json
-        - name: QuantAMMMathMovingAverage
-          file: ./abis/QuantAMMMathMovingAverage.json
-      eventHandlers:
-        - event: PoolCreated(indexed address)
-          handler: handleQuantAMMWeightedPoolCreated
-      file: ./src/mappings/quantamm.ts
-  - kind: ethereum
     name: ReClammPoolV2Factory
-    network: sonic
+    network: plasma-mainnet
     source:
       abi: BasePoolFactory
-      address: "0x99c13B259138a8ad8badbBfB87A4074591310De0"
-      startBlock: 38897147
+      address: "0x662112B8CB18889e81459b92CA0f894a2ef2c1B8"
+      startBlock: 784770
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -218,7 +143,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: ReClammPool
-    network: sonic
+    network: plasma-mainnet
     source:
       abi: ReClammPool
     mapping:

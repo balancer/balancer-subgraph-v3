@@ -1,0 +1,113 @@
+specVersion: 1.0.0
+schema:
+  file: ./schema.graphql
+indexerHints:
+  prune: never
+dataSources:
+  - kind: ethereum
+    name: Vault
+    network: plasma-mainnet
+    source:
+      abi: Vault
+      address: "0xbA1333333333a1BA1108E8412f11850A5C319bA9"
+      startBlock: 780207
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Vault
+        - Pool
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+        - name: ERC4626
+          file: ./abis/ERC4626.json
+        - name: Vault
+          file: ./abis/Vault.json
+        - name: VaultExtension
+          file: ./abis/VaultExtension.json
+        - name: ProtocolFeeController
+          file: ./abis/ProtocolFeeController.json
+      eventHandlers:
+        - event: PoolRegistered(indexed address,indexed address,(address,uint8,address,bool)[],uint256,uint32,(address,address,address),(bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,address),(bool,bool,bool,bool))
+          handler: handlePoolRegistered
+        - event: LiquidityAdded(indexed address,indexed address,indexed uint8,uint256,uint256[],uint256[])
+          handler: handleLiquidityAdded
+        - event: LiquidityRemoved(indexed address,indexed address,indexed uint8,uint256,uint256[],uint256[])
+          handler: handleLiquidityRemoved
+        - event: Swap(indexed address,indexed address,indexed address,uint256,uint256,uint256,uint256)
+          handler: handleSwap
+        - event: LiquidityAddedToBuffer(indexed address,uint256,uint256,bytes32)
+          handler: handleLiquidityAddedToBuffer
+        - event: LiquidityRemovedFromBuffer(indexed address,uint256,uint256,bytes32)
+          handler: handleLiquidityRemovedFromBuffer
+        - event: Wrap(indexed address,uint256,uint256,bytes32)
+          handler: handleWrap
+        - event: Unwrap(indexed address,uint256,uint256,bytes32)
+          handler: handleUnwrap
+        - event: SwapFeePercentageChanged(indexed address,uint256)
+          handler: handleSwapFeePercentageChanged
+        - event: PoolRecoveryModeStateChanged(indexed address,bool)
+          handler: handlePoolRecoveryModeStateChanged
+        - event: PoolPausedStateChanged(indexed address,bool)
+          handler: handlePoolPausedStateChanged
+        - event: ProtocolFeeControllerChanged(indexed address)
+          handler: handleProtocolFeeControllerChanged
+      file: ./src/mappings/vault.ts
+templates:
+  - kind: ethereum/contract
+    name: BPT
+    network: plasma-mainnet
+    source:
+      abi: BPT
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - PoolShare
+      abis:
+        - name: BPT
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mappings/bpt.ts
+  - kind: ethereum
+    name: ProtocolFeeController
+    network: plasma-mainnet
+    source:
+      abi: ProtocolFeeController
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Vault
+        - Pool
+      abis:
+        - name: ProtocolFeeController
+          file: ./abis/ProtocolFeeController.json
+        - name: VaultExtension
+          file: ./abis/VaultExtension.json
+      eventHandlers:
+        - event: GlobalProtocolSwapFeePercentageChanged(uint256)
+          handler: handleGlobalProtocolSwapFeePercentageChanged
+        - event: GlobalProtocolYieldFeePercentageChanged(uint256)
+          handler: handleGlobalProtocolYieldFeePercentageChanged
+        - event: ProtocolSwapFeePercentageChanged(indexed address,uint256)
+          handler: handleProtocolSwapFeePercentageChanged
+        - event: ProtocolYieldFeePercentageChanged(indexed address,uint256)
+          handler: handleProtocolYieldFeePercentageChanged
+        - event: PoolCreatorSwapFeePercentageChanged(indexed address,uint256)
+          handler: handlePoolCreatorSwapFeePercentageChanged
+        - event: PoolCreatorYieldFeePercentageChanged(indexed address,uint256)
+          handler: handlePoolCreatorYieldFeePercentageChanged
+        - event: ProtocolSwapFeeCollected(indexed address,indexed address,uint256)
+          handler: handleProtocolSwapFeeCollected
+        - event: ProtocolYieldFeeCollected(indexed address,indexed address,uint256)
+          handler: handleProtocolYieldFeeCollected
+        - event: ProtocolFeesWithdrawn(indexed address,indexed address,indexed address,uint256)
+          handler: handleProtocolFeesWithdrawn
+      file: ./src/mappings/controller.ts
