@@ -201,6 +201,8 @@ dataSources:
           file: ./abis/UpdateWeightRunner.json
         - name: QuantAMMGradientBasedRule
           file: ./abis/QuantAMMGradientBasedRule.json
+        - name: QuantAMMMathMovingAverage
+          file: ./abis/QuantAMMMathMovingAverage.json
       eventHandlers:
         - event: PoolCreated(indexed address)
           handler: handleQuantAMMWeightedPoolCreated
