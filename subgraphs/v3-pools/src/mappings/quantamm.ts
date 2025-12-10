@@ -105,10 +105,10 @@ function handleQuantAMMWeightedPoolParams(poolAddress: Address): Bytes {
   params.rule = ruleAddr;
   params.runner = runnerAddr;
   if (!gradients.reverted) {
-    params.gradientComputationTime = gradients.value;
+    params.gradientIntermediates = gradients.value;
   }
   if (!averages.reverted) {
-    params.movingAverageIntermediates = averages;
+    params.movingAverageIntermediates = averages.value;
   }
 
   params.save();
