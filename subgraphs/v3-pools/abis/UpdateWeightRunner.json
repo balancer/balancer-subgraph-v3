@@ -1,0 +1,1208 @@
+[
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_quantammAdmin",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_ethOracle",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "int256",
+          "name": "x",
+          "type": "int256"
+        }
+      ],
+      "name": "PRBMathSD59x18__FromIntOverflow",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "int256",
+          "name": "x",
+          "type": "int256"
+        }
+      ],
+      "name": "PRBMathSD59x18__FromIntUnderflow",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PRBMathSD59x18__MulInputTooSmall",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "rAbs",
+          "type": "uint256"
+        }
+      ],
+      "name": "PRBMathSD59x18__MulOverflow",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "prod1",
+          "type": "uint256"
+        }
+      ],
+      "name": "PRBMath__MulDivFixedPointOverflow",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "int256[]",
+          "name": "currentWeights",
+          "type": "int256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256[]",
+          "name": "data",
+          "type": "int256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256[][]",
+          "name": "ruleParameters",
+          "type": "int256[][]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64[]",
+          "name": "lambda",
+          "type": "uint64[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "epsilonMax",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "absoluteWeightGuardRail",
+          "type": "uint64"
+        }
+      ],
+      "name": "CalculateWeightsRequest",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "int256[]",
+          "name": "updatedWeights",
+          "type": "int256[]"
+        }
+      ],
+      "name": "CalculateWeightsResponse",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "ethUsdOracle",
+          "type": "address"
+        }
+      ],
+      "name": "ETHUSDOracleSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "oracleAddress",
+          "type": "address"
+        }
+      ],
+      "name": "OracleAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "oracleAddress",
+          "type": "address"
+        }
+      ],
+      "name": "OracleRemved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "poolAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "time",
+          "type": "uint40"
+        }
+      ],
+      "name": "PoolLastRunSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "poolAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "ruleAddress",
+          "type": "address"
+        }
+      ],
+      "name": "PoolRuleSetAdminOverride",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "actions",
+          "type": "uint256"
+        }
+      ],
+      "name": "SetApprovedActionsForPool",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256[]",
+          "name": "newMovingAverages",
+          "type": "int256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256[]",
+          "name": "newParameters",
+          "type": "int256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "numberOfAssets",
+          "type": "uint256"
+        }
+      ],
+      "name": "SetIntermediateValuesManually",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256[]",
+          "name": "weights",
+          "type": "int256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "lastInterpolationTimePossible",
+          "type": "uint40"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "lastUpdateTime",
+          "type": "uint40"
+        }
+      ],
+      "name": "SetWeightManual",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "oldSwapFee",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newSwapFee",
+          "type": "uint256"
+        }
+      ],
+      "name": "SwapFeeTakeSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        }
+      ],
+      "name": "UpdatePerformed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pool",
+          "type": "address"
+        }
+      ],
+      "name": "UpdatePerformedQuantAMM",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "oldSwapFee",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newSwapFee",
+          "type": "uint256"
+        }
+      ],
+      "name": "UpliftFeeTakeSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "poolAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "updateOwner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "int256[]",
+          "name": "weights",
+          "type": "int256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "lastInterpolationTimePossible",
+          "type": "uint40"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint40",
+          "name": "lastUpdateTime",
+          "type": "uint40"
+        }
+      ],
+      "name": "WeightsUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_poolAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint40",
+          "name": "_time",
+          "type": "uint40"
+        }
+      ],
+      "name": "InitialisePoolLastRunTime",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract OracleWrapper",
+          "name": "_oracle",
+          "type": "address"
+        }
+      ],
+      "name": "addOracle",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "approvedOracles",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "approvedPoolActions",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "int256[]",
+              "name": "currentWeights",
+              "type": "int256[]"
+            },
+            {
+              "internalType": "int256[]",
+              "name": "updatedWeights",
+              "type": "int256[]"
+            },
+            {
+              "internalType": "int256",
+              "name": "updateInterval",
+              "type": "int256"
+            },
+            {
+              "internalType": "int256",
+              "name": "absoluteWeightGuardRail18",
+              "type": "int256"
+            },
+            {
+              "internalType": "address",
+              "name": "poolAddress",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct UpdateWeightRunner.CalculateMuliplierAndSetWeightsLocal",
+          "name": "params",
+          "type": "tuple"
+        }
+      ],
+      "name": "calculateMultiplierAndSetWeightsFromRule",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ethOracle",
+      "outputs": [
+        {
+          "internalType": "contract OracleWrapper",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "name": "getData",
+      "outputs": [
+        {
+          "internalType": "int256[]",
+          "name": "outputData",
+          "type": "int256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_poolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getOptimisedPoolOracle",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "oracles",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_poolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getPoolApprovedActions",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_poolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getPoolOracleAndBackups",
+      "outputs": [
+        {
+          "internalType": "address[][]",
+          "name": "oracles",
+          "type": "address[][]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_poolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getPoolRule",
+      "outputs": [
+        {
+          "internalType": "contract IUpdateRule",
+          "name": "rule",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_poolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getPoolRuleSettings",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint64[]",
+              "name": "lambda",
+              "type": "uint64[]"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "uint40",
+                  "name": "lastPoolUpdateRun",
+                  "type": "uint40"
+                },
+                {
+                  "internalType": "uint40",
+                  "name": "updateInterval",
+                  "type": "uint40"
+                }
+              ],
+              "internalType": "struct IUpdateWeightRunner.PoolTimingSettings",
+              "name": "timingSettings",
+              "type": "tuple"
+            },
+            {
+              "internalType": "uint64",
+              "name": "epsilonMax",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "absoluteWeightGuardRail",
+              "type": "uint64"
+            },
+            {
+              "internalType": "int256[][]",
+              "name": "ruleParameters",
+              "type": "int256[][]"
+            },
+            {
+              "internalType": "address",
+              "name": "poolManager",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IUpdateWeightRunner.PoolRuleSettings",
+          "name": "oracles",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getQuantAMMAdmin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getQuantAMMSwapFeeTake",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getQuantAMMUpliftFeeTake",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "name": "performUpdate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "poolBackupOracles",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "poolOracles",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "poolRuleSettings",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint40",
+              "name": "lastPoolUpdateRun",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint40",
+              "name": "updateInterval",
+              "type": "uint40"
+            }
+          ],
+          "internalType": "struct IUpdateWeightRunner.PoolTimingSettings",
+          "name": "timingSettings",
+          "type": "tuple"
+        },
+        {
+          "internalType": "uint64",
+          "name": "epsilonMax",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "absoluteWeightGuardRail",
+          "type": "uint64"
+        },
+        {
+          "internalType": "address",
+          "name": "poolManager",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "quantAMMSwapFeeTake",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "quantammAdmin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract OracleWrapper",
+          "name": "_oracleToRemove",
+          "type": "address"
+        }
+      ],
+      "name": "removeOracle",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "ruleOracleStalenessThreshold",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "rules",
+      "outputs": [
+        {
+          "internalType": "contract IUpdateRule",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_pool",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_actions",
+          "type": "uint256"
+        }
+      ],
+      "name": "setApprovedActionsForPool",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_ethUsdOracle",
+          "type": "address"
+        }
+      ],
+      "name": "setETHUSDOracle",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_poolAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "int256[]",
+          "name": "_newMovingAverages",
+          "type": "int256[]"
+        },
+        {
+          "internalType": "int256[]",
+          "name": "_newParameters",
+          "type": "int256[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_numberOfAssets",
+          "type": "uint256"
+        }
+      ],
+      "name": "setIntermediateValuesManually",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_quantAMMSwapFeeTake",
+          "type": "uint256"
+        }
+      ],
+      "name": "setQuantAMMSwapFeeTake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_quantAMMUpliftFeeTake",
+          "type": "uint256"
+        }
+      ],
+      "name": "setQuantAMMUpliftFeeTake",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "contract IERC20[]",
+              "name": "assets",
+              "type": "address[]"
+            },
+            {
+              "internalType": "contract IUpdateRule",
+              "name": "rule",
+              "type": "address"
+            },
+            {
+              "internalType": "address[][]",
+              "name": "oracles",
+              "type": "address[][]"
+            },
+            {
+              "internalType": "uint40",
+              "name": "updateInterval",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint64[]",
+              "name": "lambda",
+              "type": "uint64[]"
+            },
+            {
+              "internalType": "uint64",
+              "name": "epsilonMax",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "absoluteWeightGuardRail",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "maxTradeSizeRatio",
+              "type": "uint64"
+            },
+            {
+              "internalType": "int256[][]",
+              "name": "ruleParameters",
+              "type": "int256[][]"
+            },
+            {
+              "internalType": "address",
+              "name": "poolManager",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IQuantAMMWeightedPool.PoolSettings",
+          "name": "_poolSettings",
+          "type": "tuple"
+        }
+      ],
+      "name": "setRuleForPool",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "contract IERC20[]",
+              "name": "assets",
+              "type": "address[]"
+            },
+            {
+              "internalType": "contract IUpdateRule",
+              "name": "rule",
+              "type": "address"
+            },
+            {
+              "internalType": "address[][]",
+              "name": "oracles",
+              "type": "address[][]"
+            },
+            {
+              "internalType": "uint40",
+              "name": "updateInterval",
+              "type": "uint40"
+            },
+            {
+              "internalType": "uint64[]",
+              "name": "lambda",
+              "type": "uint64[]"
+            },
+            {
+              "internalType": "uint64",
+              "name": "epsilonMax",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "absoluteWeightGuardRail",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "maxTradeSizeRatio",
+              "type": "uint64"
+            },
+            {
+              "internalType": "int256[][]",
+              "name": "ruleParameters",
+              "type": "int256[][]"
+            },
+            {
+              "internalType": "address",
+              "name": "poolManager",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct IQuantAMMWeightedPool.PoolSettings",
+          "name": "_poolSettings",
+          "type": "tuple"
+        },
+        {
+          "internalType": "address",
+          "name": "_pool",
+          "type": "address"
+        }
+      ],
+      "name": "setRuleForPoolAdminInitialise",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "int256[]",
+          "name": "_weights",
+          "type": "int256[]"
+        },
+        {
+          "internalType": "address",
+          "name": "_poolAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint40",
+          "name": "_interpolationTime",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_numberOfAssets",
+          "type": "uint256"
+        }
+      ],
+      "name": "setTargetWeightsManually",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "int256[]",
+          "name": "_weights",
+          "type": "int256[]"
+        },
+        {
+          "internalType": "address",
+          "name": "_poolAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "uint40",
+          "name": "_lastInterpolationTimePossible",
+          "type": "uint40"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_numberOfAssets",
+          "type": "uint256"
+        }
+      ],
+      "name": "setWeightsManually",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]

@@ -1,0 +1,22 @@
+[
+  {
+    "type": "function",
+    "name": "getMovingAverages",
+    "inputs": [
+      { "name": "poolAddress", "type": "address", "internalType": "address" },
+      { "name": "numberOfAssets", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [{ "name": "", "type": "int256[]", "internalType": "int256[]" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "movingAverages",
+    "inputs": [
+      { "name": "", "type": "address", "internalType": "address" },
+      { "name": "", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [{ "name": "", "type": "int256", "internalType": "int256" }],
+    "stateMutability": "view"
+  }
+]
