@@ -1,12 +1,12 @@
 import { Address, Bytes } from "@graphprotocol/graph-ts";
 
 import { handlePoolHookCreated, PoolType } from "./common";
-import { StablePool } from "../types/StablePoolFactory/StablePool";
+import { StablePool } from "../types/StablePoolV2Factory/StablePool";
 import { StableSurgeParams } from "../types/schema";
 import {
   StableSurgeHook,
   StableSurgeHookRegistered,
-} from "../types/StableSurgeHook/StableSurgeHook";
+} from "../types/StableSurgeHookV2/StableSurgeHook";
 import { scaleDown } from "../helpers/math";
 
 function handleStableSurgeParams(
