@@ -8,82 +8,100 @@ on:
 
 jobs:
   deploy-mainnet:
-    uses: ./.github/workflows/deploy-subgraph.yml
+    uses: ./.github/workflows/deploy-studio.yml
     with:
       working-directory: subgraphs/v3-vault
       subgraph-name: balancer-v3
       manifest-file: subgraph.yaml
     secrets:
-      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
-  
+      STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
+
   deploy-gnosis:
-    uses: ./.github/workflows/deploy-subgraph.yml
+    uses: ./.github/workflows/deploy-studio.yml
     with:
       working-directory: subgraphs/v3-vault
       subgraph-name: balancer-v3-gnosis
       manifest-file: subgraph.gnosis.yaml
     secrets:
-      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
+      STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
 
   deploy-sepolia:
-    uses: ./.github/workflows/deploy-subgraph.yml
+    uses: ./.github/workflows/deploy-studio.yml
     with:
       working-directory: subgraphs/v3-vault
       subgraph-name: balancer-v3-sepolia
       manifest-file: subgraph.sepolia.yaml
     secrets:
-      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
+      STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
 
   deploy-arbitrum:
-    uses: ./.github/workflows/deploy-subgraph.yml
+    uses: ./.github/workflows/deploy-studio.yml
     with:
       working-directory: subgraphs/v3-vault
       subgraph-name: balancer-v3-arbitrum
       manifest-file: subgraph.arbitrum-one.yaml
     secrets:
-      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
-  
+      STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
+
   deploy-base:
-    uses: ./.github/workflows/deploy-subgraph.yml
+    uses: ./.github/workflows/deploy-studio.yml
     with:
       working-directory: subgraphs/v3-vault
       subgraph-name: balancer-v3-base
       manifest-file: subgraph.base.yaml
     secrets:
-      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
+      STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
 
   deploy-sonic:
-    uses: ./.github/workflows/deploy-subgraph.yml
+    uses: ./.github/workflows/deploy-studio.yml
     with:
       working-directory: subgraphs/v3-vault
       subgraph-name: balancer-v3-sonic
       manifest-file: subgraph.sonic.yaml
     secrets:
-      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
+      STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
 
   deploy-avalanche:
-    uses: ./.github/workflows/deploy-subgraph.yml
+    uses: ./.github/workflows/deploy-studio.yml
     with:
       working-directory: subgraphs/v3-vault
       subgraph-name: balancer-v3-avalanche
       manifest-file: subgraph.avalanche.yaml
     secrets:
-      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
+      STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
 
   deploy-optimism:
-    uses: ./.github/workflows/deploy-subgraph.yml
+    uses: ./.github/workflows/deploy-studio.yml
     with:
       working-directory: subgraphs/v3-vault
       subgraph-name: balancer-v3-optimism
       manifest-file: subgraph.optimism.yaml
     secrets:
-      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
-    
+      STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
+
   deploy-xlayer:
-    uses: ./.github/workflows/deploy-subgraph.yml
+    uses: ./.github/workflows/deploy-studio.yml
     with:
       working-directory: subgraphs/v3-vault
       subgraph-name: balancer-v-3-x-layer
       manifest-file: subgraph.xlayer-mainnet.yaml
     secrets:
-      GRAPH_DEPLOY_KEY: ${{ secrets.GRAPH_DEPLOY_KEY }}
+      STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
+
+  deploy-plasma-goldsky:
+    uses: ./.github/workflows/deploy-goldsky.yml
+    with:
+      working-directory: subgraphs/v3-vault
+      subgraph-name: balancer-v3-plasma
+      manifest-file: subgraph.plasma-mainnet.yaml
+    secrets:
+      GOLDSKY_API_KEY: ${{ secrets.GOLDSKY_API_KEY }}
+
+  deploy-hyperevm-goldsky:
+    uses: ./.github/workflows/deploy-goldsky.yml
+    with:
+      working-directory: subgraphs/v3-vault
+      subgraph-name: balancer-v3-hyperevm
+      manifest-file: subgraph.hyperevm.yaml
+    secrets:
+      GOLDSKY_API_KEY: ${{ secrets.GOLDSKY_API_KEY }}

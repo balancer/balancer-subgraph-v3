@@ -1,4 +1,4 @@
-name: Deploy Subgraph
+name: Deploy to Studio
 
 on:
   workflow_call:
@@ -13,25 +13,24 @@ on:
         required: true
         type: string
     secrets:
-      GRAPH_DEPLOY_KEY:
+      STUDIO_DEPLOY_KEY:
         required: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: graph
-    outputs:
-      deployment_id: ${{ steps.extract-id.outputs.deployment_id }}
-    
+
     steps:
       - id: checkout
         uses: actions/checkout@v3
 
       - name: Install node
         id: setup-node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: "pnpm"
 
       - name: Install pnpm
         id: setup-pnpm
@@ -56,7 +55,7 @@ jobs:
         id: graph-build
         working-directory: ${{ inputs.working-directory }}
         run: pnpm build ${{ inputs.manifest-file }}
-      
+
       - name: Graph Deploy
         id: graph-deploy
         working-directory: ${{ inputs.working-directory }}
