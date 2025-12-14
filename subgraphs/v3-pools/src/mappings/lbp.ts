@@ -1,8 +1,8 @@
 import { Address, BigInt, Bytes } from "@graphprotocol/graph-ts";
 
 import { handlePoolCreated, PoolType } from "./common";
-import { PoolCreated } from "../types/LBPoolFactory/BasePoolFactory";
-import { LBPool } from "../types/LBPoolFactory/LBPool";
+import { PoolCreated } from "../types/LBPoolV2Factory/BasePoolFactory";
+import { LBPool } from "../types/LBPoolV2Factory/LBPool";
 import { LBPParams } from "../types/schema";
 
 function handleLBPoolParams(poolAddress: Address): Bytes {

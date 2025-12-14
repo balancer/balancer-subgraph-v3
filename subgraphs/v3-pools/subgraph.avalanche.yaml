@@ -118,52 +118,6 @@ dataSources:
           handler: handleStableSurgeHookV2Registered
       file: ./src/mappings/surge.ts
   - kind: ethereum
-    name: LBPoolFactory
-    network: avalanche
-    source:
-      abi: BasePoolFactory
-      address: "0x3BEb058DE1A25dd24223fd9e1796df8589429AcE"
-      startBlock: 59966145
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Factory
-        - Pool
-      abis:
-        - name: LBPool
-          file: ./abis/LBPool.json
-        - name: BasePoolFactory
-          file: ./abis/BasePoolFactory.json
-      eventHandlers:
-        - event: PoolCreated(indexed address)
-          handler: handleLBPoolCreated
-      file: ./src/mappings/lbp.ts
-  - kind: ethereum
-    name: LBPoolV2Factory
-    network: avalanche
-    source:
-      abi: BasePoolFactory
-      address: "0x0000000000000000000000000000000000000000"
-      startBlock: 0
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Factory
-        - Pool
-      abis:
-        - name: LBPool
-          file: ./abis/LBPool.json
-        - name: BasePoolFactory
-          file: ./abis/BasePoolFactory.json
-      eventHandlers:
-        - event: PoolCreated(indexed address)
-          handler: handleLBPoolV2Created
-      file: ./src/mappings/lbp.ts
-  - kind: ethereum
     name: ReClammPoolFactory
     network: avalanche
     source:
