@@ -118,29 +118,6 @@ dataSources:
           handler: handleStableSurgeHookV2Registered
       file: ./src/mappings/surge.ts
   - kind: ethereum
-    name: LBPoolFactory
-    network: optimism
-    source:
-      abi: BasePoolFactory
-      address: "0xC1A64500E035D9159C8826E982dFb802003227f0"
-      startBlock: 133969827
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Factory
-        - Pool
-      abis:
-        - name: LBPool
-          file: ./abis/LBPool.json
-        - name: BasePoolFactory
-          file: ./abis/BasePoolFactory.json
-      eventHandlers:
-        - event: PoolCreated(indexed address)
-          handler: handleLBPoolCreated
-      file: ./src/mappings/lbp.ts
-  - kind: ethereum
     name: ReClammPoolFactory
     network: optimism
     source:
