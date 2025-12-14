@@ -25,18 +25,18 @@ jobs:
       - id: checkout
         uses: actions/checkout@v3
 
+      - name: Install pnpm
+        id: setup-pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Install node
         id: setup-node
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: "pnpm"
-
-      - name: Install pnpm
-        id: setup-pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
 
       - name: Install dependencies
         id: pnpm-install
@@ -61,7 +61,7 @@ jobs:
         working-directory: ${{ inputs.working-directory }}
         run: |
           pnpm graph deploy \
-            --deploy-key ${{ secrets.GRAPH_DEPLOY_KEY }} \
+            --deploy-key ${{ secrets.STUDIO_DEPLOY_KEY }} \
             ${{ inputs.subgraph-name }} \
             ${{ inputs.manifest-file }} \
             --version-label ${GITHUB_SHA::8}
