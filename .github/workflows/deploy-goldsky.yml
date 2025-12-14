@@ -1,0 +1,62 @@
+name: Deploy to Goldsky
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        required: true
+        type: string
+      subgraph-name:
+        required: true
+        type: string
+      manifest-file:
+        required: true
+        type: string
+    secrets:
+      GOLDSKY_API_KEY:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: graph
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Generate manifests
+        run: pnpm generate-manifests
+
+      - name: Copy subgraph manifest
+        working-directory: ${{ inputs.working-directory }}
+        run: cp ${{ inputs.manifest-file }} subgraph.yaml
+
+      - name: Graph Codegen
+        working-directory: ${{ inputs.working-directory }}
+        run: pnpm codegen
+
+      - name: Build subgraph
+        working-directory: ${{ inputs.working-directory }}
+        run: pnpm build
+
+      - name: Deploy to Goldsky
+        uses: goldsky-io/goldsky-deploy@latest
+        with:
+          api_key: ${{ secrets.GOLDSKY_API_KEY }}
+          subgraph_name: ${{ inputs.subgraph-name }}
+          path: ${{ inputs.working-directory }}
