@@ -2,7 +2,7 @@ import { Address, Bytes } from "@graphprotocol/graph-ts";
 
 import { handlePoolCreated, PoolType } from "./common";
 import { PoolCreated } from "../types/ReClammPoolV2Factory/BasePoolFactory";
-import { ReClammPool } from "../types/ReClammPoolFactory/ReClammPool";
+import { ReClammPool } from "../types/ReClammPoolV2Factory/ReClammPool";
 import { ReClammParams } from "../types/schema";
 import { ReClammPool as ReClammPoolTemplate } from "../types/templates";
 import {
