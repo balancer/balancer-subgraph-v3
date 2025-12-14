@@ -1,8 +1,8 @@
 import { Address, Bytes } from "@graphprotocol/graph-ts";
 
 import { handlePoolCreated, PoolType } from "./common";
-import { PoolCreated } from "../types/StablePoolFactory/BasePoolFactory";
-import { StablePool } from "../types/StablePoolFactory/StablePool";
+import { PoolCreated } from "../types/StablePoolV2Factory/BasePoolFactory";
+import { StablePool } from "../types/StablePoolV2Factory/StablePool";
 import { StableParams } from "../types/schema";
 
 function handleStablePoolParams(poolAddress: Address): Bytes {
