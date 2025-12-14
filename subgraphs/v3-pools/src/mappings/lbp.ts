@@ -42,3 +42,14 @@ export function handleLBPoolCreated(event: PoolCreated): void {
     "lbpParams"
   );
 }
+
+export function handleLBPoolV2Created(event: PoolCreated): void {
+  handlePoolCreated(
+    event.params.pool,
+    event.address, // Factory
+    PoolType.LBP,
+    2,
+    handleLBPoolParams,
+    "lbpParams"
+  );
+}

@@ -118,6 +118,29 @@ dataSources:
           handler: handleStableSurgeHookV2Registered
       file: ./src/mappings/surge.ts
   - kind: ethereum
+    name: LBPoolV2Factory
+    network: plasma-mainnet
+    source:
+      abi: BasePoolFactory
+      address: "0x0f08eEf2C785AA5e7539684aF04755dEC1347b7c"
+      startBlock: 1798303
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: LBPool
+          file: ./abis/LBPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleLBPoolV2Created
+      file: ./src/mappings/lbp.ts
+  - kind: ethereum
     name: ReClammPoolV2Factory
     network: plasma-mainnet
     source:

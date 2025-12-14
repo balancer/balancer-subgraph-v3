@@ -216,6 +216,29 @@ dataSources:
           handler: handleLBPoolCreated
       file: ./src/mappings/lbp.ts
   - kind: ethereum
+    name: LBPoolV2Factory
+    network: mainnet
+    source:
+      abi: BasePoolFactory
+      address: "0x02916d8F0891309806FCb347Bf4191692cbDDcAF"
+      startBlock: 22871105
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: LBPool
+          file: ./abis/LBPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleLBPoolV2Created
+      file: ./src/mappings/lbp.ts
+  - kind: ethereum
     name: ReClammPoolFactory
     network: mainnet
     source:
