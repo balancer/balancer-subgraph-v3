@@ -1,9 +1,10 @@
-import { Address, BigInt, Bytes } from "@graphprotocol/graph-ts";
+import { Address, Bytes } from "@graphprotocol/graph-ts";
 
 import { handlePoolCreated, PoolType } from "./common";
 import { PoolCreated } from "../types/LBPoolV2Factory/BasePoolFactory";
 import { LBPool } from "../types/LBPoolV2Factory/LBPool";
-import { LBPParams } from "../types/schema";
+import { LBPParams, FixedLBPParams } from "../types/schema";
+import { FixedPriceLBPool } from "../types/FixedPriceLBPoolFactory/FixedPriceLBPool";
 
 function handleLBPoolParams(poolAddress: Address): Bytes {
   let lbp = LBPool.bind(poolAddress);
@@ -16,14 +17,14 @@ function handleLBPoolParams(poolAddress: Address): Bytes {
   lbpParams.owner = lbp.owner();
   lbpParams.projectToken = immutableData.tokens[projectTokenIndex];
   lbpParams.reserveToken = immutableData.tokens[reserveTokenIndex];
+  lbpParams.startTime = immutableData.startTime;
+  lbpParams.endTime = immutableData.endTime;
   lbpParams.projectTokenStartWeight =
     immutableData.startWeights[projectTokenIndex];
   lbpParams.projectTokenEndWeight = immutableData.endWeights[projectTokenIndex];
   lbpParams.reserveTokenStartWeight =
     immutableData.startWeights[reserveTokenIndex];
   lbpParams.reserveTokenEndWeight = immutableData.endWeights[reserveTokenIndex];
-  lbpParams.startTime = immutableData.startTime;
-  lbpParams.endTime = immutableData.endTime;
   lbpParams.isProjectTokenSwapInBlocked =
     immutableData.isProjectTokenSwapInBlocked;
 
@@ -51,5 +52,49 @@ export function handleLBPoolV2Created(event: PoolCreated): void {
     2,
     handleLBPoolParams,
     "lbpParams"
+  );
+}
+
+export function handleLBPoolV3Created(event: PoolCreated): void {
+  handlePoolCreated(
+    event.params.pool,
+    event.address, // Factory
+    PoolType.LBP,
+    3,
+    handleLBPoolParams,
+    "lbpParams"
+  );
+}
+
+function handleFixedPriceLBPoolParams(poolAddress: Address): Bytes {
+  let fixedPriceLBP = FixedPriceLBPool.bind(poolAddress);
+  let fixedLBPParams = new FixedLBPParams(poolAddress);
+
+  let immutableData = fixedPriceLBP.getFixedPriceLBPoolImmutableData();
+  let projectTokenIndex = immutableData.projectTokenIndex.toI32();
+  let reserveTokenIndex = immutableData.reserveTokenIndex.toI32();
+
+  fixedLBPParams.owner = fixedPriceLBP.owner();
+  fixedLBPParams.projectToken = immutableData.tokens[projectTokenIndex];
+  fixedLBPParams.reserveToken = immutableData.tokens[reserveTokenIndex];
+  fixedLBPParams.startTime = immutableData.startTime;
+  fixedLBPParams.endTime = immutableData.endTime;
+  fixedLBPParams.projectTokenRate = immutableData.projectTokenRate;
+  fixedLBPParams.isProjectTokenSwapInBlocked =
+    fixedPriceLBP.isProjectTokenSwapInBlocked();
+
+  fixedLBPParams.save();
+
+  return fixedLBPParams.id;
+}
+
+export function handleFixedPriceLBPoolCreated(event: PoolCreated): void {
+  handlePoolCreated(
+    event.params.pool,
+    event.address, // Factory
+    PoolType.FixedLBP,
+    1,
+    handleFixedPriceLBPoolParams,
+    "fixedLBPParams"
   );
 }
