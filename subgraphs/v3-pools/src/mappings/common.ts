@@ -11,6 +11,7 @@ export namespace PoolType {
   export const Gyro2 = "Gyro2";
   export const GyroE = "GyroE";
   export const LBP = "LBP";
+  export const FixedLBP = "FixedLBP";
   export const ReClamm = "ReClamm";
 }
 

@@ -6,6 +6,7 @@ enum PoolType {
   Gyro2
   GyroE
   LBP
+  FixedLBP
   ReClamm
 }
 
@@ -66,9 +67,9 @@ type QuantAMMWeightedParams @entity {
   "address of the active rule (UpdateWeightRunner.getPoolRule(pool))"
   rule: Bytes!
   "#int256[] from rule.getIntermediateGradientState(pool, numberOfAssets)"
-  gradientIntermediates: [BigInt!]  
+  gradientIntermediates: [BigInt!]
   "#int256[] from rule.getMovingAverages(pool, numberOfAssets)"
-  movingAverageIntermediates: [BigInt!]  
+  movingAverageIntermediates: [BigInt!]
   "Pool details array"
   details: [QuantAMMWeightedDetail!]! @derivedFrom(field: "pool")
 }
@@ -144,6 +145,25 @@ type LBPParams @entity {
   isProjectTokenSwapInBlocked: Boolean!
 }
 
+type FixedLBPParams @entity {
+  "Unique identifier for the FixedLBPParams"
+  id: Bytes!
+  "Owner of the Fixed Price LBP"
+  owner: Bytes!
+  "Project token for the Fixed Price LBP"
+  projectToken: Bytes!
+  "Reserve token for the Fixed Price LBP"
+  reserveToken: Bytes!
+  "Start time of the Fixed Price LBP"
+  startTime: BigInt!
+  "End time of the Fixed Price LBP"
+  endTime: BigInt!
+  "Project token swap in blocked"
+  isProjectTokenSwapInBlocked: Boolean!
+  "Project token rate (fixed price)"
+  projectTokenRate: BigInt!
+}
+
 type ReClammParams @entity {
   "Unique identifier for the ReClammParams"
   id: Bytes!
@@ -190,6 +210,8 @@ type Pool @entity {
   quantAMMWeightedParams: QuantAMMWeightedParams
   "Parameters for LBP pools (null for other pool types)"
   lbpParams: LBPParams
+  "Parameters for Fixed Price LBP pools (null for other pool types)"
+  fixedLBPParams: FixedLBPParams
   "Parameters for ReClamm pools (null for other pool types)"
   reClammParams: ReClammParams
 }
