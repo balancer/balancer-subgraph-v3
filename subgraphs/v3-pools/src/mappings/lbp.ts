@@ -3,7 +3,7 @@ import { Address, Bytes } from "@graphprotocol/graph-ts";
 import { handlePoolCreated, PoolType } from "./common";
 import { PoolCreated } from "../types/LBPoolV2Factory/BasePoolFactory";
 import { LBPool } from "../types/LBPoolV2Factory/LBPool";
-import { LBPool as LBPoolV3 } from "../types/LBPoolV3Factory/LBPool";
+import { LBPoolV3 } from "../types/LBPoolV3Factory/LBPoolV3";
 import { LBPParams, FixedLBPParams } from "../types/schema";
 import { FixedPriceLBPool } from "../types/FixedPriceLBPoolFactory/FixedPriceLBPool";
 
@@ -11,23 +11,27 @@ function handleLBPoolParams(poolAddress: Address): Bytes {
   let lbp = LBPool.bind(poolAddress);
   let lbpParams = new LBPParams(poolAddress);
 
-  let immutableData = lbp.getLBPoolImmutableData();
-  let projectTokenIndex = immutableData.projectTokenIndex.toI32();
-  let reserveTokenIndex = immutableData.reserveTokenIndex.toI32();
+  let immutableData = lbp.try_getLBPoolImmutableData();
+  if (!immutableData.reverted) {
+    let projectTokenIndex = immutableData.value.projectTokenIndex.toI32();
+    let reserveTokenIndex = immutableData.value.reserveTokenIndex.toI32();
 
-  lbpParams.owner = lbp.owner();
-  lbpParams.projectToken = immutableData.tokens[projectTokenIndex];
-  lbpParams.reserveToken = immutableData.tokens[reserveTokenIndex];
-  lbpParams.startTime = immutableData.startTime;
-  lbpParams.endTime = immutableData.endTime;
-  lbpParams.projectTokenStartWeight =
-    immutableData.startWeights[projectTokenIndex];
-  lbpParams.projectTokenEndWeight = immutableData.endWeights[projectTokenIndex];
-  lbpParams.reserveTokenStartWeight =
-    immutableData.startWeights[reserveTokenIndex];
-  lbpParams.reserveTokenEndWeight = immutableData.endWeights[reserveTokenIndex];
-  lbpParams.isProjectTokenSwapInBlocked =
-    immutableData.isProjectTokenSwapInBlocked;
+    lbpParams.owner = lbp.owner();
+    lbpParams.projectToken = immutableData.value.tokens[projectTokenIndex];
+    lbpParams.reserveToken = immutableData.value.tokens[reserveTokenIndex];
+    lbpParams.startTime = immutableData.value.startTime;
+    lbpParams.endTime = immutableData.value.endTime;
+    lbpParams.projectTokenStartWeight =
+      immutableData.value.startWeights[projectTokenIndex];
+    lbpParams.projectTokenEndWeight =
+      immutableData.value.endWeights[projectTokenIndex];
+    lbpParams.reserveTokenStartWeight =
+      immutableData.value.startWeights[reserveTokenIndex];
+    lbpParams.reserveTokenEndWeight =
+      immutableData.value.endWeights[reserveTokenIndex];
+    lbpParams.isProjectTokenSwapInBlocked =
+      immutableData.value.isProjectTokenSwapInBlocked;
+  }
 
   lbpParams.save();
 
@@ -35,26 +39,30 @@ function handleLBPoolParams(poolAddress: Address): Bytes {
 }
 
 function handleLBPoolV3Params(poolAddress: Address): Bytes {
-  let lbp = LBPoolV3.bind(poolAddress);
+  let lbpV3 = LBPoolV3.bind(poolAddress);
   let lbpParams = new LBPParams(poolAddress);
 
-  let immutableData = lbp.getLBPoolImmutableData();
-  let projectTokenIndex = immutableData.projectTokenIndex.toI32();
-  let reserveTokenIndex = immutableData.reserveTokenIndex.toI32();
+  let immutableData = lbpV3.try_getLBPoolImmutableData();
+  if (!immutableData.reverted) {
+    let projectTokenIndex = immutableData.value.projectTokenIndex.toI32();
+    let reserveTokenIndex = immutableData.value.reserveTokenIndex.toI32();
 
-  lbpParams.owner = lbp.owner();
-  lbpParams.projectToken = immutableData.tokens[projectTokenIndex];
-  lbpParams.reserveToken = immutableData.tokens[reserveTokenIndex];
-  lbpParams.startTime = immutableData.startTime;
-  lbpParams.endTime = immutableData.endTime;
-  lbpParams.projectTokenStartWeight =
-    immutableData.startWeights[projectTokenIndex];
-  lbpParams.projectTokenEndWeight = immutableData.endWeights[projectTokenIndex];
-  lbpParams.reserveTokenStartWeight =
-    immutableData.startWeights[reserveTokenIndex];
-  lbpParams.reserveTokenEndWeight = immutableData.endWeights[reserveTokenIndex];
-  lbpParams.isProjectTokenSwapInBlocked =
-    immutableData.isProjectTokenSwapInBlocked;
+    lbpParams.owner = lbpV3.owner();
+    lbpParams.projectToken = immutableData.value.tokens[projectTokenIndex];
+    lbpParams.reserveToken = immutableData.value.tokens[reserveTokenIndex];
+    lbpParams.startTime = immutableData.value.startTime;
+    lbpParams.endTime = immutableData.value.endTime;
+    lbpParams.projectTokenStartWeight =
+      immutableData.value.startWeights[projectTokenIndex];
+    lbpParams.projectTokenEndWeight =
+      immutableData.value.endWeights[projectTokenIndex];
+    lbpParams.reserveTokenStartWeight =
+      immutableData.value.startWeights[reserveTokenIndex];
+    lbpParams.reserveTokenEndWeight =
+      immutableData.value.endWeights[reserveTokenIndex];
+    lbpParams.isProjectTokenSwapInBlocked =
+      immutableData.value.isProjectTokenSwapInBlocked;
+  }
 
   lbpParams.save();
 
