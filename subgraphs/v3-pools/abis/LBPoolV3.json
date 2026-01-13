@@ -2,17 +2,17 @@
   {
     "inputs": [
       {
-        "internalType": "string",
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "symbol",
-        "type": "string"
-      },
-      {
         "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "symbol",
+            "type": "string"
+          },
           {
             "internalType": "address",
             "name": "owner",
@@ -28,6 +28,60 @@
             "name": "reserveToken",
             "type": "address"
           },
+          {
+            "internalType": "uint256",
+            "name": "startTime",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "endTime",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "blockProjectTokenSwapsIn",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct LBPCommonParams",
+        "name": "lbpCommonParams",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "migrationRouter",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lockDurationAfterMigration",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "bptPercentageToMigrate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "migrationWeightProjectToken",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "migrationWeightReserveToken",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct MigrationParams",
+        "name": "migrationParams",
+        "type": "tuple"
+      },
+      {
+        "components": [
           {
             "internalType": "uint256",
             "name": "projectTokenStartWeight",
@@ -50,18 +104,8 @@
           },
           {
             "internalType": "uint256",
-            "name": "startTime",
+            "name": "reserveTokenVirtualBalance",
             "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "endTime",
-            "type": "uint256"
-          },
-          {
-            "internalType": "bool",
-            "name": "blockProjectTokenSwapsIn",
-            "type": "bool"
           }
         ],
         "internalType": "struct LBPParams",
@@ -69,19 +113,26 @@
         "type": "tuple"
       },
       {
-        "internalType": "contract IVault",
-        "name": "vault",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "trustedRouter",
-        "type": "address"
-      },
-      {
-        "internalType": "string",
-        "name": "version",
-        "type": "string"
+        "components": [
+          {
+            "internalType": "contract IVault",
+            "name": "vault",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "trustedRouter",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "poolVersion",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct FactoryParams",
+        "name": "factoryParams",
+        "type": "tuple"
       }
     ],
     "stateMutability": "nonpayable",
@@ -157,24 +208,24 @@
     "type": "error"
   },
   {
+    "inputs": [],
+    "name": "InputLengthMismatch",
+    "type": "error"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "resolvedStartTime",
+        "name": "reserveTokenAmountOut",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "endTime",
+        "name": "reserveTokenRealBalance",
         "type": "uint256"
       }
     ],
-    "name": "GradualUpdateTimeTravel",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "InputLengthMismatch",
+    "name": "InsufficientRealReserveBalance",
     "type": "error"
   },
   {
@@ -195,12 +246,58 @@
   },
   {
     "inputs": [],
+    "name": "InvalidBptLockDuration",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidBptPercentageToMigrate",
+    "type": "error"
+  },
+  {
+    "inputs": [],
     "name": "InvalidExponent",
     "type": "error"
   },
   {
     "inputs": [],
+    "name": "InvalidMigrationWeights",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidProjectToken",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidReserveToken",
+    "type": "error"
+  },
+  {
+    "inputs": [],
     "name": "InvalidShortString",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "resolvedStartTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "endTime",
+        "type": "uint256"
+      }
+    ],
+    "name": "InvalidStartTime",
     "type": "error"
   },
   {
@@ -221,6 +318,11 @@
   {
     "inputs": [],
     "name": "MaxOutRatio",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MigrationRouterRequired",
     "type": "error"
   },
   {
@@ -271,6 +373,11 @@
     "type": "error"
   },
   {
+    "inputs": [],
+    "name": "SeedlessLBPInitializationWithNonZeroReserve",
+    "type": "error"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -300,6 +407,16 @@
   {
     "inputs": [],
     "name": "SwapsDisabled",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "TokensMustBeDifferent",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnsupportedOperation",
     "type": "error"
   },
   {
@@ -546,17 +663,17 @@
     "inputs": [
       {
         "internalType": "uint256[]",
-        "name": "balancesLiveScaled18",
+        "name": "",
         "type": "uint256[]"
       },
       {
         "internalType": "uint256",
-        "name": "tokenInIndex",
+        "name": "",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "invariantRatio",
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -564,11 +681,11 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "newBalance",
+        "name": "",
         "type": "uint256"
       }
     ],
-    "stateMutability": "view",
+    "stateMutability": "pure",
     "type": "function"
   },
   {
@@ -588,7 +705,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "invariant",
         "type": "uint256"
       }
     ],
@@ -833,11 +950,6 @@
             "type": "uint256[]"
           },
           {
-            "internalType": "uint256[]",
-            "name": "normalizedWeights",
-            "type": "uint256[]"
-          },
-          {
             "internalType": "uint256",
             "name": "staticSwapFeePercentage",
             "type": "uint256"
@@ -866,6 +978,11 @@
             "internalType": "bool",
             "name": "isSwapEnabled",
             "type": "bool"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "normalizedWeights",
+            "type": "uint256[]"
           }
         ],
         "internalType": "struct LBPoolDynamicData",
@@ -893,16 +1010,6 @@
             "type": "uint256[]"
           },
           {
-            "internalType": "uint256[]",
-            "name": "startWeights",
-            "type": "uint256[]"
-          },
-          {
-            "internalType": "uint256[]",
-            "name": "endWeights",
-            "type": "uint256[]"
-          },
-          {
             "internalType": "uint256",
             "name": "startTime",
             "type": "uint256"
@@ -926,6 +1033,46 @@
             "internalType": "bool",
             "name": "isProjectTokenSwapInBlocked",
             "type": "bool"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "startWeights",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "endWeights",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "reserveTokenVirtualBalance",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "migrationRouter",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lockDurationAfterMigration",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "bptPercentageToMigrate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "migrationWeightProjectToken",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "migrationWeightReserveToken",
+            "type": "uint256"
           }
         ],
         "internalType": "struct LBPoolImmutableData",
@@ -960,6 +1107,59 @@
       }
     ],
     "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getMigrationParameters",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "migrationRouter",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lockDurationAfterMigration",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "bptPercentageToMigrate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "migrationWeightProjectToken",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "migrationWeightReserveToken",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct MigrationParams",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getMigrationRouter",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -1042,8 +1242,44 @@
   },
   {
     "inputs": [],
+    "name": "getReserveTokenVirtualBalance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "getStaticSwapFeePercentage",
     "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getTokenIndices",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
       {
         "internalType": "uint256",
         "name": "",
@@ -1568,7 +1804,7 @@
     "inputs": [
       {
         "internalType": "uint256[]",
-        "name": "",
+        "name": "exactAmountsIn",
         "type": "uint256[]"
       },
       {
@@ -1592,7 +1828,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "",
+        "name": "router",
         "type": "address"
       },
       {
