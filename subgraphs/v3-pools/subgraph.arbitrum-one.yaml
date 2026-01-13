@@ -239,6 +239,52 @@ dataSources:
           handler: handleLBPoolV2Created
       file: ./src/mappings/lbp.ts
   - kind: ethereum
+    name: LBPoolV3Factory
+    network: arbitrum-one
+    source:
+      abi: BasePoolFactory
+      address: "0xF9309a99836b5F07a2440c177C049b0f0A9A2c33"
+      startBlock: 412397509
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: LBPool
+          file: ./abis/LBPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleLBPoolV3Created
+      file: ./src/mappings/lbp.ts
+  - kind: ethereum
+    name: FixedPriceLBPoolFactory
+    network: arbitrum-one
+    source:
+      abi: BasePoolFactory
+      address: "0x7f246E7Bab4CdC8C7AB41EaDA8290009a5b26E0D"
+      startBlock: 413691627
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: FixedPriceLBPool
+          file: ./abis/FixedPriceLBPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleFixedPriceLBPoolCreated
+      file: ./src/mappings/lbp.ts
+  - kind: ethereum
     name: ReClammPoolFactory
     network: arbitrum-one
     source:
