@@ -1,4 +1,4 @@
-import { Address, Bytes } from "@graphprotocol/graph-ts";
+import { Address, BigInt, Bytes } from "@graphprotocol/graph-ts";
 
 import { handlePoolCreated, PoolType } from "./common";
 import { PoolCreated } from "../types/LBPoolV2Factory/BasePoolFactory";
@@ -31,6 +31,7 @@ function handleLBPoolParams(poolAddress: Address): Bytes {
       immutableData.value.endWeights[reserveTokenIndex];
     lbpParams.isProjectTokenSwapInBlocked =
       immutableData.value.isProjectTokenSwapInBlocked;
+    lbpParams.reserveTokenVirtualBalance = BigInt.fromI32(0);
   }
 
   lbpParams.save();
@@ -62,6 +63,7 @@ function handleLBPoolV3Params(poolAddress: Address): Bytes {
       immutableData.value.endWeights[reserveTokenIndex];
     lbpParams.isProjectTokenSwapInBlocked =
       immutableData.value.isProjectTokenSwapInBlocked;
+    lbpParams.reserveTokenVirtualBalance = immutableData.value.reserveTokenVirtualBalance;
   }
 
   lbpParams.save();
