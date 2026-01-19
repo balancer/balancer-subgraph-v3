@@ -143,6 +143,8 @@ type LBPParams @entity {
   endTime: BigInt!
   "Project token swap in blocked"
   isProjectTokenSwapInBlocked: Boolean!
+  "The virtual token balance for the reserve token, indicating a seedless LBP if >0"
+  reserveTokenVirtualBalance: BigInt!
 }
 
 type FixedLBPParams @entity {
