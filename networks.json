@@ -472,6 +472,10 @@
       "address": "0x6817149cb753BF529565B4D023d7507eD2ff4Bc0",
       "startBlock": 6203205
     },
+    "LBPoolFactory": {
+      "address": "0x013d4382f291be5688afbcc741ee8a24c66b2c92",
+      "startBlock": 6204547
+    },
     "StableSurgeHookV2": {
       "address": "0x5DbAd78818D4c8958EfF2d5b95b28385A22113Cd",
       "startBlock": 6204913
