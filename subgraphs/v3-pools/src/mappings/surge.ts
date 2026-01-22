@@ -67,3 +67,17 @@ export function handleStableSurgeHookV2Registered(
     "stableSurgeParams"
   );
 }
+
+export function handleStableSurgeHookV3Registered(
+  event: StableSurgeHookRegistered
+): void {
+  handlePoolHookCreated(
+    event.params.pool,
+    event.params.factory, // Factory
+    event.address, // Hook
+    PoolType.StableSurge,
+    3,
+    handleStableSurgeParams,
+    "stableSurgeParams"
+  );
+}

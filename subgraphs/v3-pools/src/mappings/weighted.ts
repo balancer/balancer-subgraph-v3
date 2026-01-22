@@ -29,3 +29,14 @@ export function handleWeightedPoolCreated(event: PoolCreated): void {
     "weightedParams"
   );
 }
+
+export function handleWeightedPoolV2Created(event: PoolCreated): void {
+  handlePoolCreated(
+    event.params.pool,
+    event.address, // Factory
+    PoolType.Weighted,
+    2,
+    handleWeightedPoolParams,
+    "weightedParams"
+  );
+}

@@ -27,6 +27,31 @@ dataSources:
           handler: handleWeightedPoolCreated
       file: ./src/mappings/weighted.ts
   {{/if}}
+  {{#if WeightedPoolV2Factory}}
+  - kind: ethereum
+    name: WeightedPoolV2Factory
+    network: {{ network }}
+    source:
+      abi: BasePoolFactory
+      address: "{{ WeightedPoolV2Factory.address }}"
+      startBlock: {{ WeightedPoolV2Factory.startBlock }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: WeightedPool
+          file: ./abis/WeightedPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleWeightedPoolV2Created
+      file: ./src/mappings/weighted.ts
+  {{/if}}
   {{#if StablePoolFactory}}
   - kind: ethereum
     name: StablePoolFactory
@@ -75,6 +100,31 @@ dataSources:
       eventHandlers:
         - event: PoolCreated(indexed address)
           handler: handleStablePoolV2Created
+      file: ./src/mappings/stable.ts
+  {{/if}}
+  {{#if StablePoolV3Factory}}
+  - kind: ethereum
+    name: StablePoolV3Factory
+    network: {{ network }}
+    source:
+      abi: BasePoolFactory
+      address: "{{ StablePoolV3Factory.address }}"
+      startBlock: {{ StablePoolV3Factory.startBlock }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleStablePoolV3Created
       file: ./src/mappings/stable.ts
   {{/if}}
   {{#if Gyro2CLPPoolFactory}}
@@ -175,6 +225,31 @@ dataSources:
       eventHandlers:
         - event: StableSurgeHookRegistered(indexed address,indexed address)
           handler: handleStableSurgeHookV2Registered
+      file: ./src/mappings/surge.ts
+  {{/if}}
+  {{#if StableSurgeHookV3}}
+  - kind: ethereum
+    name: StableSurgeHookV3
+    network: {{ network }}
+    source:
+      abi: StableSurgeHook
+      address: "{{ StableSurgeHookV3.address }}"
+      startBlock: {{ StableSurgeHookV3.startBlock }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: StableSurgeHook
+          file: ./abis/StableSurgeHook.json
+      eventHandlers:
+        - event: StableSurgeHookRegistered(indexed address,indexed address)
+          handler: handleStableSurgeHookV3Registered
       file: ./src/mappings/surge.ts
   {{/if}}
   {{#if QuantAMMWeightedPoolFactory}}
