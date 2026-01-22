@@ -1,4 +1,6 @@
 specVersion: 1.0.0
+indexerHints:
+  prune: never
 schema:
   file: ./schema.graphql
 dataSources:
@@ -26,6 +28,29 @@ dataSources:
           handler: handleWeightedPoolCreated
       file: ./src/mappings/weighted.ts
   - kind: ethereum
+    name: WeightedPoolV2Factory
+    network: hyperevm
+    source:
+      abi: BasePoolFactory
+      address: "0x6eE18fbb1BBcC5CF700cD75ea1aef2bb21e3cB3F"
+      startBlock: 24746962
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: WeightedPool
+          file: ./abis/WeightedPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleWeightedPoolV2Created
+      file: ./src/mappings/weighted.ts
+  - kind: ethereum
     name: StablePoolV2Factory
     network: hyperevm
     source:
@@ -47,6 +72,29 @@ dataSources:
       eventHandlers:
         - event: PoolCreated(indexed address)
           handler: handleStablePoolV2Created
+      file: ./src/mappings/stable.ts
+  - kind: ethereum
+    name: StablePoolV3Factory
+    network: hyperevm
+    source:
+      abi: BasePoolFactory
+      address: "0xb96524227c4B5Ab908FC3d42005FE3B07abA40E9"
+      startBlock: 24749890
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleStablePoolV3Created
       file: ./src/mappings/stable.ts
   - kind: ethereum
     name: Gyro2CLPPoolFactory
@@ -118,6 +166,29 @@ dataSources:
           handler: handleStableSurgeHookV2Registered
       file: ./src/mappings/surge.ts
   - kind: ethereum
+    name: LBPoolFactory
+    network: hyperevm
+    source:
+      abi: BasePoolFactory
+      address: "0x013d4382f291be5688afbcc741ee8a24c66b2c92"
+      startBlock: 6204547
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: LBPool
+          file: ./abis/LBPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleLBPoolCreated
+      file: ./src/mappings/lbp.ts
+  - kind: ethereum
     name: LBPoolV2Factory
     network: hyperevm
     source:
@@ -155,8 +226,8 @@ dataSources:
         - Factory
         - Pool
       abis:
-        - name: LBPool
-          file: ./abis/LBPool.json
+        - name: LBPoolV3
+          file: ./abis/LBPoolV3.json
         - name: BasePoolFactory
           file: ./abis/BasePoolFactory.json
       eventHandlers:

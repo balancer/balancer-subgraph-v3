@@ -1,4 +1,6 @@
 specVersion: 1.0.0
+indexerHints:
+  prune: never
 schema:
   file: ./schema.graphql
 dataSources:
@@ -26,6 +28,29 @@ dataSources:
           handler: handleWeightedPoolCreated
       file: ./src/mappings/weighted.ts
   - kind: ethereum
+    name: WeightedPoolV2Factory
+    network: avalanche
+    source:
+      abi: BasePoolFactory
+      address: "0xBDbADc891BB95DEE80eBC491699228EF0f7D6fF1"
+      startBlock: 75901404
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: WeightedPool
+          file: ./abis/WeightedPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleWeightedPoolV2Created
+      file: ./src/mappings/weighted.ts
+  - kind: ethereum
     name: StablePoolV2Factory
     network: avalanche
     source:
@@ -47,6 +72,29 @@ dataSources:
       eventHandlers:
         - event: PoolCreated(indexed address)
           handler: handleStablePoolV2Created
+      file: ./src/mappings/stable.ts
+  - kind: ethereum
+    name: StablePoolV3Factory
+    network: avalanche
+    source:
+      abi: BasePoolFactory
+      address: "0x16B50F6bF8C8Ca73C07e17762188c5DEEe7aE5Db"
+      startBlock: 75903744
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleStablePoolV3Created
       file: ./src/mappings/stable.ts
   - kind: ethereum
     name: Gyro2CLPPoolFactory

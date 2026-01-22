@@ -1,4 +1,6 @@
 specVersion: 1.0.0
+indexerHints:
+  prune: never
 schema:
   file: ./schema.graphql
 dataSources:
@@ -26,6 +28,29 @@ dataSources:
           handler: handleWeightedPoolCreated
       file: ./src/mappings/weighted.ts
   - kind: ethereum
+    name: WeightedPoolV2Factory
+    network: plasma-mainnet
+    source:
+      abi: BasePoolFactory
+      address: "0x86705Ee19c0509Ff68F1118C55ee2ebdE383D122"
+      startBlock: 11664775
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: WeightedPool
+          file: ./abis/WeightedPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleWeightedPoolV2Created
+      file: ./src/mappings/weighted.ts
+  - kind: ethereum
     name: StablePoolV2Factory
     network: plasma-mainnet
     source:
@@ -47,6 +72,29 @@ dataSources:
       eventHandlers:
         - event: PoolCreated(indexed address)
           handler: handleStablePoolV2Created
+      file: ./src/mappings/stable.ts
+  - kind: ethereum
+    name: StablePoolV3Factory
+    network: plasma-mainnet
+    source:
+      abi: BasePoolFactory
+      address: "0x65A22Ec32c37835Ad5E77Eb6f7452Ac59E113a9F"
+      startBlock: 11667596
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleStablePoolV3Created
       file: ./src/mappings/stable.ts
   - kind: ethereum
     name: Gyro2CLPPoolFactory
@@ -155,8 +203,8 @@ dataSources:
         - Factory
         - Pool
       abis:
-        - name: LBPool
-          file: ./abis/LBPool.json
+        - name: LBPoolV3
+          file: ./abis/LBPoolV3.json
         - name: BasePoolFactory
           file: ./abis/BasePoolFactory.json
       eventHandlers:

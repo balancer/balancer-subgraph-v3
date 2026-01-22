@@ -63,6 +63,14 @@
     "FixedPriceLBPoolFactory": {
       "address": "0xeb1AA94421aEcFB1dc17dDB1068E4609c4bE8758",
       "startBlock": 24076153
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0x332694Ef46D880DF6Ea9593e04CB8ABEE5F81D99",
+      "startBlock": 24249675
+    },
+    "StablePoolV3Factory": {
+      "address": "0x4eFcd8bcE8AC9b94bd76648e2c85bEf6c40F3228",
+      "startBlock": 24249915
     }
   },
   "gnosis": {
@@ -125,6 +133,14 @@
     "FixedPriceLBPoolFactory": {
       "address": "0xD9E91f7aD501929b089992842a3f193795E6479e",
       "startBlock": 43795554
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0x78Ad1e1c10033b18ceaa20088e4e490BE42A5417",
+      "startBlock": 44199319
+    },
+    "StablePoolV3Factory": {
+      "address": "0x9338F9484120FdFe8f8abEa8E5d6d9D8D055962D",
+      "startBlock": 44199860
     }
   },
   "sepolia": {
@@ -191,6 +207,14 @@
     "FixedPriceLBPoolFactory": {
       "address": "0x57Ef4cB125d1c690dF98118281090b7CdC7b9F85",
       "startBlock": 9899600
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0xc383B240B40660cca6c5b6Fbf4fbAb85E9F4de24",
+      "startBlock": 10058578
+    },
+    "StablePoolV3Factory": {
+      "address": "0x472FAE37a8A05474fDe0CcfF6d239719f8881fF5",
+      "startBlock": 10058789
     }
   },
   "arbitrum-one": {
@@ -257,6 +281,14 @@
     "FixedPriceLBPoolFactory": {
       "address": "0x7f246E7Bab4CdC8C7AB41EaDA8290009a5b26E0D",
       "startBlock": 413691627
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0x83bf399FA3DC49Af8fb5c34031a50c7C93F56129",
+      "startBlock": 422073053
+    },
+    "StablePoolV3Factory": {
+      "address": "0x1FC7F1F84CFE61a04224AC8D3F87f56214FeC08c",
+      "startBlock": 422084277
     }
   },
   "base": {
@@ -323,6 +355,14 @@
     "FixedPriceLBPoolFactory": {
       "address": "0xb96524227c4B5Ab908FC3d42005FE3B07abA40E9",
       "startBlock": 39855606
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0xBDbADc891BB95DEE80eBC491699228EF0f7D6fF1",
+      "startBlock": 40902756
+    },
+    "StablePoolV3Factory": {
+      "address": "0xFc2986feAB34713E659da84F3B1FA32c1da95832",
+      "startBlock": 40904166
     }
   },
   "sonic": {
@@ -407,6 +447,14 @@
     "ReClammPoolV2Factory": {
       "address": "0x309abcAeFa19CA6d34f0D8ff4a4103317c138657",
       "startBlock": 64832650
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0xBDbADc891BB95DEE80eBC491699228EF0f7D6fF1",
+      "startBlock": 75901404
+    },
+    "StablePoolV3Factory": {
+      "address": "0x16B50F6bF8C8Ca73C07e17762188c5DEEe7aE5Db",
+      "startBlock": 75903744
     }
   },
   "optimism": {
@@ -445,6 +493,14 @@
     "ReClammPoolV2Factory": {
       "address": "0x891EC9B34829276a9a8ef2F8A9cEAF2486017e0d",
       "startBlock": 137934460
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0x254F3A2974b97dc2E675f6115c845567C55f83b0",
+      "startBlock": 146498303
+    },
+    "StablePoolV3Factory": {
+      "address": "0x1780e8185199DAc45284039Bb3E3B64060D943AB",
+      "startBlock": 146499718
     }
   },
   "hyperevm": {
@@ -499,6 +555,14 @@
     "FixedPriceLBPoolFactory": {
       "address": "0xAE563E3f8219521950555F5962419C8919758Ea2",
       "startBlock": 22620097
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0x6eE18fbb1BBcC5CF700cD75ea1aef2bb21e3cB3F",
+      "startBlock": 24746962
+    },
+    "StablePoolV3Factory": {
+      "address": "0xb96524227c4B5Ab908FC3d42005FE3B07abA40E9",
+      "startBlock": 24749890
     }
   },
   "plasma-mainnet": {
@@ -545,6 +609,14 @@
     "FixedPriceLBPoolFactory": {
       "address": "0xEAedc32a51c510d35ebC11088fD5fF2b47aACF2E",
       "startBlock": 9572537
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0x86705Ee19c0509Ff68F1118C55ee2ebdE383D122",
+      "startBlock": 11664775
+    },
+    "StablePoolV3Factory": {
+      "address": "0x65A22Ec32c37835Ad5E77Eb6f7452Ac59E113a9F",
+      "startBlock": 11667596
     }
   },
   "xlayer-mainnet": {
@@ -579,6 +651,14 @@
     "ReClammPoolV2Factory": {
       "address": "0x013D4382F291be5688AFBcc741Ee8A24C66B2C92",
       "startBlock": 43084003
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0x25EA7b202CD8447e8E6F4A7C59b19C66DfEf1925",
+      "startBlock": 49826470
+    },
+    "StablePoolV3Factory": {
+      "address": "0x1702067424096F07A60e62cceE3dE9420068492D",
+      "startBlock": 49829278
     }
   },
   "monad": {
@@ -598,10 +678,6 @@
       "address": "0xf5CDdF6feD9C589f1Be04899F48f9738531daD59",
       "startBlock": 49161857
     },
-    "StableSurgeHookV3": {
-      "address": "0x6817149cb753BF529565B4D023d7507eD2ff4Bc0",
-      "startBlock": 48705989
-    },
     "Gyro2CLPPoolFactory": {
       "address": "0x9805dcfD25e6De36bad8fe9D3Fe2c9b44B764102",
       "startBlock": 48705473
@@ -609,6 +685,10 @@
     "GyroECLPPoolFactory": {
       "address": "0xE3881627B8DeeBCCF9c23B291430a549Fc0bE5F7",
       "startBlock": 48705590
+    },
+    "StableSurgeHookV2": {
+      "address": "0x6817149cb753BF529565B4D023d7507eD2ff4Bc0",
+      "startBlock": 48705989
     },
     "ReClammPoolV2Factory": {
       "address": "0x96484f2aBF5e58b15176dbF1A799627B53F13B6d",
