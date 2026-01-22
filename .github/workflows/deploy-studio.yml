@@ -60,6 +60,7 @@ jobs:
         id: graph-deploy
         working-directory: ${{ inputs.working-directory }}
         run: |
+          set -e
           pnpm graph deploy \
             --deploy-key ${{ secrets.STUDIO_DEPLOY_KEY }} \
             ${{ inputs.subgraph-name }} \
