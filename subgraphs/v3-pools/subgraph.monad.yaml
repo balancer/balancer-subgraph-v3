@@ -1,4 +1,6 @@
 specVersion: 1.0.0
+indexerHints:
+  prune: never
 schema:
   file: ./schema.graphql
 dataSources:
@@ -95,7 +97,7 @@ dataSources:
           handler: handleGyroEPoolCreated
       file: ./src/mappings/gyroE.ts
   - kind: ethereum
-    name: StableSurgeHookV3
+    name: StableSurgeHookV2
     network: monad
     source:
       abi: StableSurgeHook
@@ -115,7 +117,7 @@ dataSources:
           file: ./abis/StableSurgeHook.json
       eventHandlers:
         - event: StableSurgeHookRegistered(indexed address,indexed address)
-          handler: handleStableSurgeHookV3Registered
+          handler: handleStableSurgeHookV2Registered
       file: ./src/mappings/surge.ts
   - kind: ethereum
     name: ReClammPoolV2Factory
