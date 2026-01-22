@@ -580,5 +580,39 @@
       "address": "0x013D4382F291be5688AFBcc741Ee8A24C66B2C92",
       "startBlock": 43084003
     }
+  },
+  "monad": {
+    "Vault": {
+      "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
+      "startBlock": 22091249
+    },
+    "ProtocolFeeController": {
+      "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
+      "startBlock": 22091229
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0x4bdCc2fb18AEb9e2d281b0278D946445070EAda7",
+      "startBlock": 49154738
+    },
+    "StablePoolV3Factory": {
+      "address": "0xf5CDdF6feD9C589f1Be04899F48f9738531daD59",
+      "startBlock": 49161857
+    },
+    "StableSurgeHookV3": {
+      "address": "0x6817149cb753BF529565B4D023d7507eD2ff4Bc0",
+      "startBlock": 48705989
+    },
+    "Gyro2CLPPoolFactory": {
+      "address": "0x9805dcfD25e6De36bad8fe9D3Fe2c9b44B764102",
+      "startBlock": 48705473
+    },
+    "GyroECLPPoolFactory": {
+      "address": "0xE3881627B8DeeBCCF9c23B291430a549Fc0bE5F7",
+      "startBlock": 48705590
+    },
+    "ReClammPoolV2Factory": {
+      "address": "0x96484f2aBF5e58b15176dbF1A799627B53F13B6d",
+      "startBlock": 48707240
+    }
   }
 }
