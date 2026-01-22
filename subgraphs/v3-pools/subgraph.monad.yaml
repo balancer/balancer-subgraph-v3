@@ -1,0 +1,169 @@
+specVersion: 1.0.0
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: WeightedPoolV2Factory
+    network: monad
+    source:
+      abi: BasePoolFactory
+      address: "0x4bdCc2fb18AEb9e2d281b0278D946445070EAda7"
+      startBlock: 49154738
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: WeightedPool
+          file: ./abis/WeightedPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleWeightedPoolV2Created
+      file: ./src/mappings/weighted.ts
+  - kind: ethereum
+    name: StablePoolV3Factory
+    network: monad
+    source:
+      abi: BasePoolFactory
+      address: "0xf5CDdF6feD9C589f1Be04899F48f9738531daD59"
+      startBlock: 49161857
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleStablePoolV3Created
+      file: ./src/mappings/stable.ts
+  - kind: ethereum
+    name: Gyro2CLPPoolFactory
+    network: monad
+    source:
+      abi: BasePoolFactory
+      address: "0x9805dcfD25e6De36bad8fe9D3Fe2c9b44B764102"
+      startBlock: 48705473
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: Gyro2CLPPool
+          file: ./abis/Gyro2CLPPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleGyro2PoolCreated
+      file: ./src/mappings/gyro2.ts
+  - kind: ethereum
+    name: GyroECLPPoolFactory
+    network: monad
+    source:
+      abi: BasePoolFactory
+      address: "0xE3881627B8DeeBCCF9c23B291430a549Fc0bE5F7"
+      startBlock: 48705590
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: GyroECLPPool
+          file: ./abis/GyroECLPPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleGyroEPoolCreated
+      file: ./src/mappings/gyroE.ts
+  - kind: ethereum
+    name: StableSurgeHookV3
+    network: monad
+    source:
+      abi: StableSurgeHook
+      address: "0x6817149cb753BF529565B4D023d7507eD2ff4Bc0"
+      startBlock: 48705989
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: StablePool
+          file: ./abis/StablePool.json
+        - name: StableSurgeHook
+          file: ./abis/StableSurgeHook.json
+      eventHandlers:
+        - event: StableSurgeHookRegistered(indexed address,indexed address)
+          handler: handleStableSurgeHookV3Registered
+      file: ./src/mappings/surge.ts
+  - kind: ethereum
+    name: ReClammPoolV2Factory
+    network: monad
+    source:
+      abi: BasePoolFactory
+      address: "0x96484f2aBF5e58b15176dbF1A799627B53F13B6d"
+      startBlock: 48707240
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: ReClammPool
+          file: ./abis/ReClammPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleReClammPoolV2Created
+      file: ./src/mappings/reclamm.ts
+templates:
+  - kind: ethereum/contract
+    name: ReClammPool
+    network: monad
+    source:
+      abi: ReClammPool
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ReClammParams
+      abis:
+        - name: ReClammPool
+          file: ./abis/ReClammPool.json
+      eventHandlers:
+        - event: CenterednessMarginUpdated(uint256)
+          handler: handleReClammCenterednessMarginUpdated
+        - event: LastTimestampUpdated(uint32)
+          handler: handleReClammLastTimestampUpdated
+        - event: PriceRatioStateUpdated(uint256,uint256,uint256,uint256)
+          handler: handleReClammPriceRatioStateUpdated
+        - event: DailyPriceShiftExponentUpdated(uint256,uint256)
+          handler: handleReClammDailyPriceShiftExponentUpdated
+        - event: VirtualBalancesUpdated(uint256,uint256)
+          handler: handleReClammVirtualBalancesUpdated
+      file: ./src/mappings/reclamm.ts
