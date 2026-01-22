@@ -1,6 +1,4 @@
 specVersion: 1.0.0
-indexerHints:
-  prune: never
 schema:
   file: ./schema.graphql
 indexerHints:
@@ -8,11 +6,11 @@ indexerHints:
 dataSources:
   - kind: ethereum
     name: Vault
-    network: {{ network }}
+    network: monad
     source:
       abi: Vault
-      address: "{{ Vault.address }}"
-      startBlock: {{ Vault.startBlock }}
+      address: "0xbA1333333333a1BA1108E8412f11850A5C319bA9"
+      startBlock: 22091249
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -64,7 +62,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: BPT
-    network: {{ network }}
+    network: monad
     source:
       abi: BPT
     mapping:
@@ -82,7 +80,7 @@ templates:
       file: ./src/mappings/bpt.ts
   - kind: ethereum
     name: ProtocolFeeController
-    network: {{ network }}
+    network: monad
     source:
       abi: ProtocolFeeController
     mapping:

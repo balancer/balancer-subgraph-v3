@@ -105,3 +105,12 @@ jobs:
       manifest-file: subgraph.hyperevm.yaml
     secrets:
       GOLDSKY_API_KEY: ${{ secrets.GOLDSKY_API_KEY }}
+
+  deploy-monad:
+    uses: ./.github/workflows/deploy-studio.yml
+    with:
+      working-directory: subgraphs/v3-vault
+      subgraph-name: balancer-v3-monad
+      manifest-file: subgraph.monad.yaml
+    secrets:
+      STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
