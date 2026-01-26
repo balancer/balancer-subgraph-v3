@@ -110,7 +110,7 @@ jobs:
     uses: ./.github/workflows/deploy-studio.yml
     with:
       working-directory: subgraphs/v3-pools
-      subgraph-name: balancer-pools-v3-monad
+      subgraph-name: balancer-pools-v-3-monad
       manifest-file: subgraph.monad.yaml
     secrets:
       STUDIO_DEPLOY_KEY: ${{ secrets.STUDIO_DEPLOY_KEY }}
