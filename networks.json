@@ -409,6 +409,14 @@
     "ReClammPoolV2Factory": {
       "address": "0x99c13B259138a8ad8badbBfB87A4074591310De0",
       "startBlock": 38897147
+    },
+    "WeightedPoolV2Factory": {
+      "address": "0x7F43e26A3f58446C4dF021a690dc56a3968962ED",
+      "startBlock": 61250433
+    },
+    "StablePoolV3Factory": {
+      "address": "0x3ed9B71B5cC9CB5987Ecb63B88923824C890e0f9",
+      "startBlock": 61250433
     }
   },
   "avalanche": {
