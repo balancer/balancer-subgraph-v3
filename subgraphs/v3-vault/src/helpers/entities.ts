@@ -2,11 +2,9 @@ import { Address, BigDecimal, BigInt, Bytes } from "@graphprotocol/graph-ts";
 import {
   Buffer,
   Pool,
-  PoolSnapshot,
   PoolToken,
   RateProvider,
   Token,
-  User,
   Vault,
 } from "../types/schema";
 import { PoolShare } from "../types/schema";
@@ -58,50 +56,6 @@ export function getPoolShare(
   }
 
   return poolShare;
-}
-
-export function createPoolSnapshot(pool: Pool, timestamp: i32): void {
-  let poolAddress = pool.id;
-  let dayTimestamp = timestamp - (timestamp % DAY);
-
-  let snapshotId = poolAddress.toHex() + "-" + dayTimestamp.toString();
-  let snapshot = PoolSnapshot.load(snapshotId);
-
-  if (!snapshot) {
-    snapshot = new PoolSnapshot(snapshotId);
-  }
-
-  let poolTokens = pool.tokens.load();
-  let balances = new Array<BigDecimal>(poolTokens.length);
-  let totalSwapFees = new Array<BigDecimal>(poolTokens.length);
-  let totalStaticSwapFees = new Array<BigDecimal>(poolTokens.length);
-  let totalDynamicSwapFees = new Array<BigDecimal>(poolTokens.length);
-  let totalSwapVolumes = new Array<BigDecimal>(poolTokens.length);
-  let totalProtocolSwapFees = new Array<BigDecimal>(poolTokens.length);
-  let totalProtocolYieldFees = new Array<BigDecimal>(poolTokens.length);
-  for (let i = 0; i < poolTokens.length; i++) {
-    totalSwapVolumes[i] = poolTokens[i].volume;
-    balances[i] = poolTokens[i].balance;
-    totalSwapFees[i] = poolTokens[i].totalSwapFee;
-    totalStaticSwapFees[i] = poolTokens[i].totalStaticSwapFee;
-    totalDynamicSwapFees[i] = poolTokens[i].totalDynamicSwapFee;
-    totalProtocolSwapFees[i] = poolTokens[i].totalProtocolSwapFee;
-    totalProtocolYieldFees[i] = poolTokens[i].totalProtocolYieldFee;
-  }
-
-  snapshot.pool = poolAddress;
-  snapshot.balances = balances;
-  snapshot.timestamp = dayTimestamp;
-  snapshot.swapsCount = pool.swapsCount;
-  snapshot.totalShares = pool.totalShares;
-  snapshot.holdersCount = pool.holdersCount;
-  snapshot.totalSwapFees = totalSwapFees;
-  snapshot.totalStaticSwapFees = totalStaticSwapFees;
-  snapshot.totalDynamicSwapFees = totalDynamicSwapFees;
-  snapshot.totalSwapVolumes = totalSwapVolumes;
-  snapshot.totalProtocolSwapFees = totalProtocolSwapFees;
-  snapshot.totalProtocolYieldFees = totalProtocolYieldFees;
-  snapshot.save();
 }
 
 export function createPoolToken(
@@ -180,15 +134,6 @@ export function loadPoolToken(
   return poolToken;
 }
 
-export function createUser(userAddress: Address): void {
-  let user = User.load(userAddress);
-
-  if (!user) {
-    user = new User(userAddress);
-    user.save();
-  }
-}
-
 export function createToken(tokenAddress: Address): void {
   let tokenContract = ERC20.bind(tokenAddress);
 
@@ -219,8 +164,6 @@ export function createPoolShare(
   poolAddress: Address,
   userAddress: Address
 ): PoolShare {
-  createUser(userAddress);
-
   let poolShareId = getPoolShareId(poolAddress, userAddress);
   let poolShare = new PoolShare(poolShareId);
   poolShare.user = userAddress;

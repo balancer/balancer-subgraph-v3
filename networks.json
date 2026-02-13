@@ -2,7 +2,8 @@
   "mainnet": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 21332121
+      "startBlock": 21332121,
+      "storeEventsFrom": "24448316"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -76,7 +77,8 @@
   "gnosis": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 37360338
+      "startBlock": 37360338,
+      "storeEventsFrom": "44660131"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -146,7 +148,8 @@
   "sepolia": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 7212247
+      "startBlock": 7212247,
+      "storeEventsFrom": "10252458"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -220,7 +223,8 @@
   "arbitrum-one": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 297810187
+      "startBlock": 297810187,
+      "storeEventsFrom": "431682483"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -294,7 +298,8 @@
   "base": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 25343854
+      "startBlock": 25343854,
+      "storeEventsFrom": "42100931"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -368,7 +373,8 @@
   "sonic": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 368135
+      "startBlock": 368135,
+      "storeEventsFrom": "62787956"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -422,7 +428,8 @@
   "avalanche": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 59955604
+      "startBlock": 59955604,
+      "storeEventsFrom": "77975035"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -468,7 +475,8 @@
   "optimism": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 133969431
+      "startBlock": 133969431,
+      "storeEventsFrom": "147696217"
     },
     "ProtocolFeeController": {
       "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
@@ -514,7 +522,8 @@
   "hyperevm": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 6132445
+      "startBlock": 6132445,
+      "storeEventsFrom": "27182709"
     },
     "ProtocolFeeController": {
       "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
@@ -576,7 +585,8 @@
   "plasma-mainnet": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 780207
+      "startBlock": 780207,
+      "storeEventsFrom": "14059457"
     },
     "ProtocolFeeController": {
       "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
@@ -630,7 +640,8 @@
   "xlayer-mainnet": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 43082760
+      "startBlock": 43082760,
+      "storeEventsFrom": "52222177"
     },
     "ProtocolFeeController": {
       "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
@@ -672,7 +683,8 @@
   "monad": {
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
-      "startBlock": 22091249
+      "startBlock": 22091249,
+      "storeEventsFrom": "55122952"
     },
     "ProtocolFeeController": {
       "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
