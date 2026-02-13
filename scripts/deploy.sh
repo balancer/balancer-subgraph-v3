@@ -31,11 +31,27 @@ fi
 echo "${GREEN}Using git commit hash as version: ${VERSION}${NC}"
 echo ""
 
+# Get subgraph type (required) and network (optional)
+if [ -z "$1" ]; then
+  echo "${RED}Error: Subgraph type is required (v3-vault or v3-pools)${NC}"
+  exit 1
+fi
+
+SUBGRAPH_TYPE="$1"
+
+if [ "$SUBGRAPH_TYPE" != "v3-vault" ] && [ "$SUBGRAPH_TYPE" != "v3-pools" ]; then
+  echo "${RED}Error: Invalid subgraph type. Must be 'v3-vault' or 'v3-pools'${NC}"
+  exit 1
+fi
+
+echo "${GREEN}Deploying ${SUBGRAPH_TYPE} subgraphs...${NC}"
+echo ""
+
 # List of networks to deploy (excluding test networks)
-if [ -n "$1" ]; then
-  # Use the network provided as first argument
-  NETWORKS=("$1")
-  echo "${GREEN}Deploying to specific network: ${1}${NC}"
+if [ -n "$2" ]; then
+  # Use the network provided as second argument
+  NETWORKS=("$2")
+  echo "${GREEN}Deploying to specific network: ${2}${NC}"
 else
   # Deploy to all networks
   NETWORKS=(
@@ -51,12 +67,12 @@ else
   )
 fi
 
-echo "${GREEN}Deploying subgraphs to networks with version ${VERSION}...${NC}"
+echo "${GREEN}Deploying with version ${VERSION}...${NC}"
 echo ""
 
 # Deploy each network
 for network in "${NETWORKS[@]}"; do
-  SUBGRAPH_NAME="v3-vault-${network}-smol"
+  SUBGRAPH_NAME="${SUBGRAPH_TYPE}-${network}-smol"
 
   # Use subgraph.yaml for mainnet, otherwise use network-specific file
   if [ "$network" = "mainnet" ]; then
@@ -66,7 +82,7 @@ for network in "${NETWORKS[@]}"; do
   fi
 
   # Check if subgraph file exists
-  if [ ! -f "subgraphs/v3-vault/$SUBGRAPH_FILE" ]; then
+  if [ ! -f "subgraphs/${SUBGRAPH_TYPE}/$SUBGRAPH_FILE" ]; then
     echo "${YELLOW}Warning: ${SUBGRAPH_FILE} not found, skipping...${NC}"
     continue
   fi
@@ -76,7 +92,7 @@ for network in "${NETWORKS[@]}"; do
 
   # Deploy the subgraph
   echo "  Deploying..."
-  if (cd subgraphs/v3-vault && npx graph deploy "$SUBGRAPH_NAME" "$SUBGRAPH_FILE" \
+  if (cd "subgraphs/${SUBGRAPH_TYPE}" && npx graph deploy "$SUBGRAPH_NAME" "$SUBGRAPH_FILE" \
     --node "$GRAPH_NODE" \
     --ipfs "$IPFS_NODE" \
     --deploy-key "$DEPLOY_KEY" \

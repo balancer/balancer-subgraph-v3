@@ -3,6 +3,14 @@ name: Manual Deploy
 on:
   workflow_dispatch:
     inputs:
+      subgraph:
+        description: "Choose subgraph"
+        required: true
+        default: "vault"
+        type: choice
+        options:
+          - vault
+          - pools
       network:
         description: "Choose network"
         required: true
@@ -29,6 +37,7 @@ jobs:
     env:
       DEPLOY_KEY: ${{ secrets.ORMI_DEPLOY_KEY }}
       NETWORK: ${{ inputs.network }}
+      SUBGRAPH: ${{ inputs.subgraph }}
     steps:
       - uses: actions/checkout@v6
 
@@ -56,4 +65,4 @@ jobs:
 
       - name: Deploy
         run: |
-          sh script/deploy.sh "$NETWORK"
+          sh script/deploy.sh v3-"$SUBGRAPH" "$NETWORK"
