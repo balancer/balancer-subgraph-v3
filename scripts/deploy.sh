@@ -48,8 +48,6 @@ else
     "polygon-zkevm"
     "base"
     "sonic"
-    "frax"
-    "mode"
   )
 fi
 
