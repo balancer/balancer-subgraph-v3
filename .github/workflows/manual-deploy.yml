@@ -26,8 +26,8 @@ on:
           - avalanche
           - optimism
           - hyperevm
-          - plasma-mainnet
-          - xlayer-mainnet
+          - plasma
+          - xlayer
           - monad
 
 jobs:

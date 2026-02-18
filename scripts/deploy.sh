@@ -64,6 +64,10 @@ else
     "polygon-zkevm"
     "base"
     "sonic"
+    "hyperevm"
+    "plasma"
+    "xlayer"
+    "monad"
   )
 fi
 
