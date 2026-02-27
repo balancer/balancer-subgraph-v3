@@ -5,6 +5,7 @@ enum PoolType {
   StableSurge
   Gyro2
   GyroE
+  GyroEV2
   LBP
   FixedLBP
   ReClamm
