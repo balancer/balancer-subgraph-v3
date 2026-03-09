@@ -43,3 +43,14 @@ export function handleGyroEPoolCreated(event: PoolCreated): void {
     "gyroEParams"
   );
 }
+
+export function handleGyroEV2PoolCreated(event: PoolCreated): void {
+  handlePoolCreated(
+    event.params.pool,
+    event.address, // Factory
+    PoolType.GyroE,
+    2,
+    handleGyroEPoolParams,
+    "gyroEParams"
+  );
+}
