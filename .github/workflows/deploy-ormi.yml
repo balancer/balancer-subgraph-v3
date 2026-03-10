@@ -65,4 +65,4 @@ jobs:
 
       - name: Deploy
         run: |
-          sh script/deploy.sh v3-"$SUBGRAPH" "$NETWORK"
+          bash scripts/deploy.sh v3-"$SUBGRAPH" "$NETWORK"
