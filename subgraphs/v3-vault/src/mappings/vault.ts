@@ -1,4 +1,10 @@
-import { Address, BigDecimal, BigInt, log } from "@graphprotocol/graph-ts";
+import {
+  Address,
+  BigDecimal,
+  BigInt,
+  dataSource,
+  log,
+} from "@graphprotocol/graph-ts";
 import {
   BufferSharesBurned,
   BufferSharesMinted,
@@ -26,10 +32,8 @@ import {
   LiquidityManagement,
 } from "../types/schema";
 import {
-  createPoolSnapshot,
   createPoolToken,
   createRateProvider,
-  createUser,
   getToken,
   getVault,
   loadPoolToken,
@@ -144,8 +148,6 @@ export function handlePoolRegistered(event: PoolRegistered): void {
   pool.hook = hook.id;
   pool.save();
 
-  createPoolSnapshot(pool, event.block.timestamp.toI32());
-
   BPT.create(poolAddress);
 }
 
@@ -217,10 +219,13 @@ export function handleLiquidityAdded(event: LiquidityAdded): void {
   join.blockNumber = event.block.number;
   join.blockTimestamp = event.block.timestamp;
   join.transactionHash = transactionHash;
-  join.save();
+
+  const storeEventsFrom = dataSource.context().get("storeEventsFrom");
+  if (storeEventsFrom && event.block.number > storeEventsFrom.toBigInt()) {
+    join.save();
+  }
 
   updateProtocolYieldFeeAmounts(pool);
-  createPoolSnapshot(pool, event.block.timestamp.toI32());
 }
 
 export function handleLiquidityRemoved(event: LiquidityRemoved): void {
@@ -284,10 +289,13 @@ export function handleLiquidityRemoved(event: LiquidityRemoved): void {
   exit.blockNumber = event.block.number;
   exit.blockTimestamp = event.block.timestamp;
   exit.transactionHash = transactionHash;
-  exit.save();
+
+  const storeEventsFrom = dataSource.context().get("storeEventsFrom");
+  if (storeEventsFrom && event.block.number > storeEventsFrom.toBigInt()) {
+    exit.save();
+  }
 
   updateProtocolYieldFeeAmounts(pool);
-  createPoolSnapshot(pool, event.block.timestamp.toI32());
 }
 
 /************************************
@@ -295,8 +303,6 @@ export function handleLiquidityRemoved(event: LiquidityRemoved): void {
  ************************************/
 
 export function handleSwap(event: SwapEvent): void {
-  createUser(event.transaction.from);
-
   let poolAddress = event.params.pool;
 
   let pool = Pool.load(poolAddress);
@@ -359,7 +365,11 @@ export function handleSwap(event: SwapEvent): void {
   swap.blockNumber = event.block.number;
   swap.blockTimestamp = event.block.timestamp;
   swap.transactionHash = event.transaction.hash;
-  swap.save();
+
+  const storeEventsFrom = dataSource.context().get("storeEventsFrom");
+  if (storeEventsFrom && event.block.number > storeEventsFrom.toBigInt()) {
+    swap.save();
+  }
 
   let tokenInAddress = event.params.tokenIn;
   let tokenOutAddress = event.params.tokenOut;
@@ -414,7 +424,6 @@ export function handleSwap(event: SwapEvent): void {
   poolTokenOut.save();
 
   updateProtocolYieldFeeAmounts(pool);
-  createPoolSnapshot(pool, event.block.timestamp.toI32());
 }
 
 /************************************
@@ -490,8 +499,6 @@ export function handleLiquidityRemovedFromBuffer(
 }
 
 export function handleBufferSharesMinted(event: BufferSharesMinted): void {
-  createUser(event.params.to);
-
   let buffer = getBuffer(event.params.wrappedToken);
   let wrappedToken = getToken(changetype<Address>(buffer.wrappedToken));
   let issuedShares = scaleDown(
@@ -516,8 +523,6 @@ export function handleBufferSharesMinted(event: BufferSharesMinted): void {
 }
 
 export function handleBufferSharesBurned(event: BufferSharesBurned): void {
-  createUser(event.params.from);
-
   let buffer = getBuffer(event.params.wrappedToken);
   let wrappedToken = getToken(changetype<Address>(buffer.wrappedToken));
   let burnedShares = scaleDown(

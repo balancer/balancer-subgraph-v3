@@ -97,6 +97,29 @@ dataSources:
           handler: handleGyroEPoolCreated
       file: ./src/mappings/gyroE.ts
   - kind: ethereum
+    name: GyroECLPPoolV2Factory
+    network: monad
+    source:
+      abi: BasePoolFactory
+      address: "0x4b979eD48F982Ba0baA946cB69c1083eB799729c"
+      startBlock: 52157765
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: GyroECLPPool
+          file: ./abis/GyroECLPPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleGyroEV2PoolCreated
+      file: ./src/mappings/gyroE.ts
+  - kind: ethereum
     name: StableSurgeHookV2
     network: monad
     source:

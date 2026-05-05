@@ -79,9 +79,6 @@ type Pool @entity {
   tokens: [PoolToken!]! @derivedFrom(field: "pool")
   "Rate providers associated with this Pool"
   rateProviders: [RateProvider!]! @derivedFrom(field: "pool")
-
-  "Snapshots of this Pool's state over time"
-  snapshots: [PoolSnapshot!]! @derivedFrom(field: "pool")
 }
 
 type Hook @entity {
@@ -231,7 +228,7 @@ type BufferShare @entity {
   "Unique identifier for the BufferShare"
   id: Bytes!
   "The user who owns this share"
-  user: User!
+  user: Bytes!
   "The Buffer this share is for"
   buffer: Buffer!
   "Balance of this share"
@@ -268,7 +265,7 @@ type Swap @entity(immutable: true) {
   "Indicates whether the swap fee is dynamic"
   hasDynamicSwapFee: Boolean!
   "User who performed the swap"
-  user: User!
+  user: Bytes!
   "Block number when the swap occurred"
   blockNumber: BigInt!
   "Timestamp of the block when the swap occurred"
@@ -296,7 +293,7 @@ type AddRemove @entity(immutable: true) {
   "The Pool where liquidity was added or removed"
   pool: Pool!
   "User who performed the add or remove action"
-  user: User!
+  user: Bytes!
   "Block number when the event occurred"
   blockNumber: BigInt!
   "Timestamp of the block when the event occurred"
@@ -313,47 +310,7 @@ type PoolShare @entity {
   "The Pool this share is for"
   pool: Pool!
   "The user who owns this share"
-  user: User!
+  user: Bytes!
   "Balance of this share"
   balance: BigDecimal!
-}
-
-type PoolSnapshot @entity {
-  "Unique identifier for the PoolSnapshot"
-  id: ID!
-  "The Pool this snapshot is for"
-  pool: Pool!
-  "Timestamp when this snapshot was taken"
-  timestamp: Int!
-  "Total shares of the Pool at the time of the snapshot"
-  totalShares: BigDecimal!
-  "Number of swaps performed in the Pool at the time of the snapshot"
-  swapsCount: BigInt!
-  "Number of unique holders of the Pool's tokens at the time of the snapshot"
-  holdersCount: BigInt!
-  "Balances of each token in the Pool at the time of the snapshot"
-  balances: [BigDecimal!]!
-  "Total swap fees collected for each token at the time of the snapshot"
-  totalSwapFees: [BigDecimal!]!
-  "Total static swap fees collected for each token at the time of the snapshot"
-  totalStaticSwapFees: [BigDecimal!]!
-  "Total dynamic swap fees collected for each token at the time of the snapshot"
-  totalDynamicSwapFees: [BigDecimal!]!
-  "Total swap volumes for each token at the time of the snapshot"
-  totalSwapVolumes: [BigDecimal!]!
-  "Total protocol swap fees collected for each token at the time of the snapshot"
-  totalProtocolSwapFees: [BigDecimal!]!
-  "Total protocol yield fees collected for each token at the time of the snapshot"
-  totalProtocolYieldFees: [BigDecimal!]!
-}
-
-type User @entity {
-  "Unique identifier for the User (typically their address)"
-  id: Bytes!
-  "Swaps performed by this user"
-  swaps: [Swap!] @derivedFrom(field: "user")
-  "Pool shares owned by this user"
-  shares: [PoolShare!] @derivedFrom(field: "user")
-  "Add/Remove liquidity events performed by this user"
-  addRemoves: [AddRemove!] @derivedFrom(field: "user")
 }
