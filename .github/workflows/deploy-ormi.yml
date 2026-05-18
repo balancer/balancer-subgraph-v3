@@ -17,6 +17,7 @@ on:
         default: "mainnet"
         type: choice
         options:
+          - all
           - mainnet
           - gnosis
           - sepolia
@@ -40,6 +41,9 @@ jobs:
       SUBGRAPH: ${{ inputs.subgraph }}
     steps:
       - uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Install node
         uses: actions/setup-node@v6
@@ -65,4 +69,8 @@ jobs:
 
       - name: Deploy
         run: |
-          bash scripts/deploy.sh v3-"$SUBGRAPH" "$NETWORK"
+          if [ "$NETWORK" = "all" ]; then
+            bash scripts/deploy.sh v3-"$SUBGRAPH"
+          else
+            bash scripts/deploy.sh v3-"$SUBGRAPH" "$NETWORK"
+          fi
