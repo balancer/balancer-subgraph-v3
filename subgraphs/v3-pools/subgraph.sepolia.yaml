@@ -378,6 +378,29 @@ dataSources:
         - event: PoolCreated(indexed address)
           handler: handleReClammPoolV2Created
       file: ./src/mappings/reclamm.ts
+  - kind: ethereum
+    name: ReClammPoolV3Factory
+    network: sepolia
+    source:
+      abi: BasePoolFactory
+      address: "0x0F5eF30D8440213dc7A9d7bbcf83322041a3e296"
+      startBlock: 10845565
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: ReClammPool
+          file: ./abis/ReClammPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleReClammPoolV3Created
+      file: ./src/mappings/reclamm.ts
 templates:
   - kind: ethereum/contract
     name: ReClammPool

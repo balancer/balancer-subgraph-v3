@@ -56,6 +56,10 @@
       "address": "0xDaa273AeEc06e9CCb7428a77E2abb1E4659B16D2",
       "startBlock": 22832233
     },
+    "ReClammPoolV3Factory": {
+      "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
+      "startBlock": 25089901
+    },
     "LBPoolV3Factory": {
       "address": "0xD5584b37D1845fFeD958C2d94bC675603DdCce68",
       "startBlock": 24049130
@@ -125,6 +129,10 @@
     "ReClammPoolV2Factory": {
       "address": "0xc86eF81E57492BE65BFCa9b0Ed53dCBAfDBe6100",
       "startBlock": 40884126
+    },
+    "ReClammPoolV3Factory": {
+      "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
+      "startBlock": 46161188
     },
     "LBPoolV3Factory": {
       "address": "0x2FAa140F90f76eeEEBC191f4eF4b2634be1E4e91",
@@ -200,6 +208,10 @@
       "address": "0xf58A574530Ea5cEB727095e6039170c1e8068fcA",
       "startBlock": 8676768
     },
+    "ReClammPoolV3Factory": {
+      "address": "0x0F5eF30D8440213dc7A9d7bbcf83322041a3e296",
+      "startBlock": 10845565
+    },
     "LBPoolV3Factory": {
       "address": "0x7fed0fd2843232973eE2F61120e9D9C5eB78Cb16",
       "startBlock": 9875019
@@ -274,6 +286,10 @@
       "address": "0x355bD33F0033066BB3DE396a6d069be57353AD95",
       "startBlock": 353502388
     },
+    "ReClammPoolV3Factory": {
+      "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
+      "startBlock": 462550223
+    },
     "LBPoolV3Factory": {
       "address": "0xF9309a99836b5F07a2440c177C049b0f0A9A2c33",
       "startBlock": 412397509
@@ -347,6 +363,10 @@
     "ReClammPoolV2Factory": {
       "address": "0x201efd508c8DfE9DE1a13c2452863A78CB2a86Cc",
       "startBlock": 32339174
+    },
+    "ReClammPoolV3Factory": {
+      "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
+      "startBlock": 45962895
     },
     "LBPoolV3Factory": {
       "address": "0x6eE18fbb1BBcC5CF700cD75ea1aef2bb21e3cB3F",
@@ -448,6 +468,10 @@
       "address": "0x309abcAeFa19CA6d34f0D8ff4a4103317c138657",
       "startBlock": 64832650
     },
+    "ReClammPoolV3Factory": {
+      "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
+      "startBlock": 85367900
+    },
     "WeightedPoolV2Factory": {
       "address": "0xBDbADc891BB95DEE80eBC491699228EF0f7D6fF1",
       "startBlock": 75901404
@@ -493,6 +517,10 @@
     "ReClammPoolV2Factory": {
       "address": "0x891EC9B34829276a9a8ef2F8A9cEAF2486017e0d",
       "startBlock": 137934460
+    },
+    "ReClammPoolV3Factory": {
+      "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
+      "startBlock": 151558357
     },
     "WeightedPoolV2Factory": {
       "address": "0x254F3A2974b97dc2E675f6115c845567C55f83b0",
@@ -548,6 +576,10 @@
       "address": "0x4BB42f71CAB7Bd13e9f958dA4351B9fa2d3A42FF",
       "startBlock": 7341537
     },
+    "ReClammPoolV3Factory": {
+      "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
+      "startBlock": 35038984
+    },
     "LBPoolV3Factory": {
       "address": "0xd22eecBB495380Ef52b1CCeF1cA594979885D484",
       "startBlock": 22289198
@@ -602,6 +634,10 @@
       "address": "0x662112B8CB18889e81459b92CA0f894a2ef2c1B8",
       "startBlock": 784770
     },
+    "ReClammPoolV3Factory": {
+      "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
+      "startBlock": 21791435
+    },
     "LBPoolV3Factory": {
       "address": "0x3BEb058DE1A25dd24223fd9e1796df8589429AcE",
       "startBlock": 9246669
@@ -652,6 +688,10 @@
       "address": "0x013D4382F291be5688AFBcc741Ee8A24C66B2C92",
       "startBlock": 43084003
     },
+    "ReClammPoolV3Factory": {
+      "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
+      "startBlock": 59951838
+    },
     "WeightedPoolV2Factory": {
       "address": "0x25EA7b202CD8447e8E6F4A7C59b19C66DfEf1925",
       "startBlock": 49826470
@@ -693,6 +733,10 @@
     "ReClammPoolV2Factory": {
       "address": "0x96484f2aBF5e58b15176dbF1A799627B53F13B6d",
       "startBlock": 48707240
+    },
+    "ReClammPoolV3Factory": {
+      "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
+      "startBlock": 74434072
     }
   }
 }

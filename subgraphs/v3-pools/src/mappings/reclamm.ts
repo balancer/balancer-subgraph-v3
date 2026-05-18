@@ -66,6 +66,19 @@ export function handleReClammPoolV2Created(event: PoolCreated): void {
   ReClammPoolTemplate.create(event.params.pool);
 }
 
+export function handleReClammPoolV3Created(event: PoolCreated): void {
+  handlePoolCreated(
+    event.params.pool,
+    event.address, // Factory
+    PoolType.ReClamm,
+    3,
+    handleReClammPoolParams,
+    "reClammParams"
+  );
+
+  ReClammPoolTemplate.create(event.params.pool);
+}
+
 export function handleReClammCenterednessMarginUpdated(
   event: CenterednessMarginUpdated
 ): void {
