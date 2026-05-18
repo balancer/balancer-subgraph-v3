@@ -61,12 +61,12 @@ jobs:
 
       - name: Graph Codegen
         id: graph-codegen
-        working-directory: ./subgraphs/v3-vault
+        working-directory: ./subgraphs/v3-${{ env.SUBGRAPH }}
         run: pnpm codegen subgraph.sepolia.yaml
 
       - name: Graph Build
         id: graph-build
-        working-directory: ./subgraphs/v3-vault
+        working-directory: ./subgraphs/v3-${{ env.SUBGRAPH }}
         run: pnpm build
 
       - name: Deploy
