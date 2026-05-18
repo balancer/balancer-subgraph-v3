@@ -69,6 +69,8 @@ fi
 echo "Deploying with version ${VERSION}..."
 echo ""
 
+FAILED=0
+
 # Deploy each network
 for network in "${NETWORKS[@]}"; do
   SUBGRAPH_NAME="${SUBGRAPH_TYPE}-${network}-smol"
@@ -99,9 +101,15 @@ for network in "${NETWORKS[@]}"; do
     echo "  ✓ Successfully deployed ${SUBGRAPH_NAME} ${VERSION}"
   else
     echo "  ✗ Failed to deploy ${SUBGRAPH_NAME}"
+    FAILED=1
   fi
 
   echo ""
 done
+
+if [ "$FAILED" -eq 1 ]; then
+  echo "Deployment completed with errors!"
+  exit 1
+fi
 
 echo "Deployment complete!"
