@@ -288,11 +288,11 @@ dataSources:
       file: ./src/mappings/reclamm.ts
   - kind: ethereum
     name: ReClammPoolV3Factory
-    network: base
+    network: sonic
     source:
       abi: BasePoolFactory
-      address: "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF"
-      startBlock: 45962894
+      address: "0x78e48AEAf36666ae528De39c4300F09adb9722E8"
+      startBlock: 70948860
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
