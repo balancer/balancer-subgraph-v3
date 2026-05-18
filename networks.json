@@ -58,7 +58,7 @@
     },
     "ReClammPoolV3Factory": {
       "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
-      "startBlock": 25089901
+      "startBlock": 25089896
     },
     "LBPoolV3Factory": {
       "address": "0xD5584b37D1845fFeD958C2d94bC675603DdCce68",
@@ -132,7 +132,7 @@
     },
     "ReClammPoolV3Factory": {
       "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
-      "startBlock": 46161188
+      "startBlock": 46161159
     },
     "LBPoolV3Factory": {
       "address": "0x2FAa140F90f76eeEEBC191f4eF4b2634be1E4e91",
@@ -210,7 +210,7 @@
     },
     "ReClammPoolV3Factory": {
       "address": "0x0F5eF30D8440213dc7A9d7bbcf83322041a3e296",
-      "startBlock": 10845565
+      "startBlock": 10845564
     },
     "LBPoolV3Factory": {
       "address": "0x7fed0fd2843232973eE2F61120e9D9C5eB78Cb16",
@@ -366,7 +366,7 @@
     },
     "ReClammPoolV3Factory": {
       "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
-      "startBlock": 45962895
+      "startBlock": 45962894
     },
     "LBPoolV3Factory": {
       "address": "0x6eE18fbb1BBcC5CF700cD75ea1aef2bb21e3cB3F",
@@ -520,7 +520,7 @@
     },
     "ReClammPoolV3Factory": {
       "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
-      "startBlock": 151558357
+      "startBlock": 151558344
     },
     "WeightedPoolV2Factory": {
       "address": "0x254F3A2974b97dc2E675f6115c845567C55f83b0",
@@ -578,7 +578,7 @@
     },
     "ReClammPoolV3Factory": {
       "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
-      "startBlock": 35038984
+      "startBlock": 35038923
     },
     "LBPoolV3Factory": {
       "address": "0xd22eecBB495380Ef52b1CCeF1cA594979885D484",
@@ -636,7 +636,7 @@
     },
     "ReClammPoolV3Factory": {
       "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
-      "startBlock": 21791435
+      "startBlock": 21791433
     },
     "LBPoolV3Factory": {
       "address": "0x3BEb058DE1A25dd24223fd9e1796df8589429AcE",
@@ -736,7 +736,7 @@
     },
     "ReClammPoolV3Factory": {
       "address": "0x3ccD78683efFffdDc1A16f5553C896ac6D3ab7FF",
-      "startBlock": 74434072
+      "startBlock": 74433976
     }
   }
 }
