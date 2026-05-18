@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: graph
     env:
-      DEPLOY_KEY: ${{ secrets.ORMI_DEPLOY_KEY }}
+      ORMI_DEPLOY_KEY: ${{ secrets.ORMI_DEPLOY_KEY }}
       NETWORK: ${{ inputs.network }}
       SUBGRAPH: ${{ inputs.subgraph }}
     steps:
