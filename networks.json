@@ -460,6 +460,10 @@
       "address": "0x99c13B259138a8ad8badbBfB87A4074591310De0",
       "startBlock": 38897147
     },
+    "ReClammPoolV3Factory": {
+      "address": "0x78e48AEAf36666ae528De39c4300F09adb9722E8",
+      "startBlock": 70948860
+    },
     "WeightedPoolV2Factory": {
       "address": "0x7F43e26A3f58446C4dF021a690dc56a3968962ED",
       "startBlock": 61250433
