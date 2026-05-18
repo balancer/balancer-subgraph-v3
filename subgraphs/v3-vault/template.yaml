@@ -7,6 +7,10 @@ dataSources:
   - kind: ethereum
     name: Vault
     network: {{ network }}
+    context:
+      storeEventsFrom:
+        type: BigInt
+        data: "{{ Vault.storeEventsFrom }}"
     source:
       abi: Vault
       address: "{{ Vault.address }}"

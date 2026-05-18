@@ -7,6 +7,10 @@ dataSources:
   - kind: ethereum
     name: Vault
     network: monad
+    context:
+      storeEventsFrom:
+        type: BigInt
+        data: "55122952"
     source:
       abi: Vault
       address: "0xbA1333333333a1BA1108E8412f11850A5C319bA9"

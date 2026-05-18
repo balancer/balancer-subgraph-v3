@@ -16,6 +16,7 @@ function replacePlaceholders(template, network, networkData) {
   for (const [contractName, contractData] of Object.entries(networkData)) {
     result = result.replace(new RegExp(`{{ ${contractName}\\.address }}`, 'g'), contractData.address);
     result = result.replace(new RegExp(`{{ ${contractName}\\.startBlock }}`, 'g'), contractData.startBlock.toString());
+    result = result.replace(new RegExp(`{{ ${contractName}\\.storeEventsFrom }}`, 'g'), contractData.storeEventsFrom);
   }
   
   result = result

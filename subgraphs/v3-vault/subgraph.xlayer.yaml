@@ -6,11 +6,15 @@ schema:
 dataSources:
   - kind: ethereum
     name: Vault
-    network: plasma-mainnet
+    network: xlayer
+    context:
+      storeEventsFrom:
+        type: BigInt
+        data: "52222177"
     source:
       abi: Vault
       address: "0xbA1333333333a1BA1108E8412f11850A5C319bA9"
-      startBlock: 780207
+      startBlock: 43082760
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -62,7 +66,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: BPT
-    network: plasma-mainnet
+    network: xlayer
     source:
       abi: BPT
     mapping:
@@ -80,7 +84,7 @@ templates:
       file: ./src/mappings/bpt.ts
   - kind: ethereum
     name: ProtocolFeeController
-    network: plasma-mainnet
+    network: xlayer
     source:
       abi: ProtocolFeeController
     mapping:
