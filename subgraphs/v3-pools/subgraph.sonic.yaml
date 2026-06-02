@@ -264,6 +264,52 @@ dataSources:
           handler: handleQuantAMMWeightedPoolCreated
       file: ./src/mappings/quantamm.ts
   - kind: ethereum
+    name: LBPoolV3Factory
+    network: sonic
+    source:
+      abi: BasePoolFactory
+      address: "0x0Ae401E1257BcC61403589b0122efdBFEE57C9BA"
+      startBlock: 63248943
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: LBPoolV3
+          file: ./abis/LBPoolV3.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleLBPoolV3Created
+      file: ./src/mappings/lbp.ts
+  - kind: ethereum
+    name: FixedPriceLBPoolFactory
+    network: sonic
+    source:
+      abi: BasePoolFactory
+      address: "0xe817acC363207F53D8100c0B7f42688CA24D4302"
+      startBlock: 63089226
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Factory
+        - Pool
+      abis:
+        - name: FixedPriceLBPool
+          file: ./abis/FixedPriceLBPool.json
+        - name: BasePoolFactory
+          file: ./abis/BasePoolFactory.json
+      eventHandlers:
+        - event: PoolCreated(indexed address)
+          handler: handleFixedPriceLBPoolCreated
+      file: ./src/mappings/lbp.ts
+  - kind: ethereum
     name: ReClammPoolV2Factory
     network: sonic
     source:

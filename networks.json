@@ -471,6 +471,14 @@
     "StablePoolV3Factory": {
       "address": "0x3ed9B71B5cC9CB5987Ecb63B88923824C890e0f9",
       "startBlock": 61250433
+    },
+    "LBPoolV3Factory": {
+      "address": "0x0Ae401E1257BcC61403589b0122efdBFEE57C9BA",
+      "startBlock": 63248943
+    },
+    "FixedPriceLBPoolFactory": {
+      "address": "0xe817acC363207F53D8100c0B7f42688CA24D4302",
+      "startBlock": 63089226
     }
   },
   "avalanche": {
