@@ -318,8 +318,8 @@ dataSources:
         - Factory
         - Pool
       abis:
-        - name: LBPoolV4
-          file: ./abis/LBPoolV4.json
+        - name: LBPoolV3
+          file: ./abis/LBPoolV3.json
         - name: BasePoolFactory
           file: ./abis/BasePoolFactory.json
       eventHandlers:
