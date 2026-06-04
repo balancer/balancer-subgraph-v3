@@ -4,7 +4,6 @@ import { handlePoolCreated, PoolType } from "./common";
 import { PoolCreated } from "../types/LBPoolV2Factory/BasePoolFactory";
 import { LBPool } from "../types/LBPoolV2Factory/LBPool";
 import { LBPoolV3 } from "../types/LBPoolV3Factory/LBPoolV3";
-import { LBPoolV4 } from "../types/LBPoolV4Factory/LBPoolV4";
 import { LBPParams, FixedLBPParams } from "../types/schema";
 import { FixedPriceLBPool } from "../types/FixedPriceLBPoolFactory/FixedPriceLBPool";
 

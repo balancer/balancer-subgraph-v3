@@ -10,7 +10,7 @@ dataSources:
     context:
       storeEventsFrom:
         type: BigInt
-        data: "10252458"
+        data: "10892137"
     source:
       abi: Vault
       address: "0xbA1333333333a1BA1108E8412f11850A5C319bA9"
