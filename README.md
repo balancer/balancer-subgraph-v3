@@ -2,15 +2,6 @@
 
 This repository contains the subgraph implementations for Balancer v3, including pools and vault subgraphs. It's structured as a monorepo using pnpm workspaces.
 
-## Preliminary Deployments
-
-| Subgraph | Version | Endpoint                                                                                  |
-| -------- | ------- | ----------------------------------------------------------------------------------------- |
-| Vault    | 10      | https://api.studio.thegraph.com/query/31386/balancer-v3-sepolia-10th/version/latest       |
-| Pools    | 10      | https://api.studio.thegraph.com/query/31386/balancer-pools-v3-sepolia-10th/version/latest |
-| Vault    | 9th     | https://api.studio.thegraph.com/query/31386/balancer-v3-sepolia-9th/version/latest        |
-| Pools    | 9th     | https://api.studio.thegraph.com/query/31386/balancer-pools-v3-sepolia-9th/version/latest  |
-
 ## Prerequisites
 
 - Node.js (v18 or later)
