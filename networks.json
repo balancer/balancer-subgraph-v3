@@ -3,7 +3,7 @@
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
       "startBlock": 21332121,
-      "storeEventsFrom": "25144166"
+      "storeEventsFrom": "25782495"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -90,7 +90,7 @@
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
       "startBlock": 37360338,
-      "storeEventsFrom": "46289656"
+      "storeEventsFrom": "47789760"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -173,7 +173,7 @@
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
       "startBlock": 7212247,
-      "storeEventsFrom": "10892137"
+      "storeEventsFrom": "11515587"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -260,7 +260,7 @@
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
       "startBlock": 297810187,
-      "storeEventsFrom": "465175042"
+      "storeEventsFrom": "495850041"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -347,7 +347,7 @@
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
       "startBlock": 25343854,
-      "storeEventsFrom": "46291850"
+      "storeEventsFrom": "50136513"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -434,7 +434,7 @@
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
       "startBlock": 368135,
-      "storeEventsFrom": "71127090"
+      "storeEventsFrom": "77704045"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -509,7 +509,7 @@
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
       "startBlock": 59955604,
-      "storeEventsFrom": "86009669"
+      "storeEventsFrom": "93110145"
     },
     "ProtocolFeeController": {
       "address": "0xa731C23D7c95436Baaae9D52782f966E1ed07cc8",
@@ -568,7 +568,7 @@
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
       "startBlock": 133969431,
-      "storeEventsFrom": "151887136"
+      "storeEventsFrom": "155731799"
     },
     "ProtocolFeeController": {
       "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
@@ -627,7 +627,7 @@
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
       "startBlock": 6132445,
-      "storeEventsFrom": "35703303"
+      "storeEventsFrom": "43519710"
     },
     "ProtocolFeeController": {
       "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
@@ -824,7 +824,7 @@
     "Vault": {
       "address": "0xbA1333333333a1BA1108E8412f11850A5C319bA9",
       "startBlock": 22091249,
-      "storeEventsFrom": "76061173"
+      "storeEventsFrom": "97081728"
     },
     "ProtocolFeeController": {
       "address": "0xCaCC7E1efEEA8BB3af6d5720d12C1876aa6EE76b",
